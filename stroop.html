@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <style>
+      .test-container{
+        height : 200px;
+        width: 200px;
+        border-style: solid;
+        background:url("cross.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .triangle-right {
+      	width: 0;
+      	height: 0;background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+      	border-top: 12px solid transparent;
+      	border-left: 25px solid red;
+      	border-bottom: 12px solid transparent;
+      }
+
+      .arrow-tail-right{
+          width: 25px;
+          height: 10px;
+          background-color: red;
+          text-align: right;
+
+      }
+
+      .right-left{
+        display: none;
+        top: 87px;
+        position: relative;
+      }
+
+      .right-right{
+        display: none;
+        top: 87px;
+        position: relative;
+        left: 75%;
+      }
+
+      .top-top{
+        display: none;
+        position: relative;
+        left: 87px;
+      }
+
+      .top-bottom{
+        display: none;
+        position: relative;
+        top: 75%;
+        left: 87px;
+      }
+
+      .bottom-bottom{
+        display: none;
+        position: relative;
+        top: 75%;
+        left: 87px;
+      }
+      .bottom-top{
+        display: none;
+        position: relative;
+        left: 87px;
+      }
+
+      .left-left{
+        display: none;
+        top: 87px;
+        position: relative;
+      }
+      .top-top.active{
+        display: block;
+      }
+      .top-bottom.active{
+        display: block;
+      }
+      .bottom-bottom.active{
+        display: block;
+      }
+      .bottom-top.active{
+        display: block;
+      }
+      .right-left.active{
+        display: block;
+      }
+      .right-right.active{
+        display: block;
+      }
+      .left-left.active{
+        display: block;
+      }
+      .left-right.active{
+        display: block;
+      }
+      .left-right{
+        display: none;
+        top: 87px;
+        position: relative;
+        left: 75%;
+      }
+
+      .triangle-down {
+      	width: 0;
+      	height: 0;
+      	border-left: 12px solid transparent;
+      	border-right: 12px solid transparent;
+      	border-top: 25px solid red;
+      }
+
+      .triangle-up {
+      	width: 0;
+      	height: 0;
+      	border-left: 12px solid transparent;
+      	border-right: 12px solid transparent;
+      	border-bottom: 25px solid red;
+      }
+      .arrow-tail-top{
+        width: 10px;
+        height: 25px;
+        background-color: red;
+        text-align: right;
+
+      }
+
+      .triangle-left {
+      	width: 0;
+      	height: 0;
+      	border-top: 12px solid transparent;
+      	border-right: 25px solid red;
+      	border-bottom: 12px solid transparent;
+      }
+      .countdown{
+        text-align: center;
+        width: 40px;
+        position: absolute;
+        top: 0%:
+      }
+      .countdown3{
+        opacity: 0;
+      }
+      .countdown3.active{
+        -webkit-animation: fadeIn3 1s linear 1;
+        -webkit-animation-delay: 0s;
+      }
+      .countdown2{
+        opacity: 0;
+      }
+      .countdown2.active{
+        -webkit-animation: fadeIn2 1s ease-out 1;
+        -webkit-animation-delay: 1s;
+      }
+      .countdown1{
+        opacity: 0;
+      }
+      .countdown1.active{
+        -webkit-animation: fadeIn1 1s ease-out 1;
+        -webkit-animation-delay: 2s;
+      }
+      .countdownGo{
+        opacity: 0;
+      }
+      .countdownGo.active{
+        -webkit-animation: fadeInGo 1s ease-out 1;
+        -webkit-animation-delay: 3s;
+      }
+
+      @-webkit-keyframes fadeIn3 {
+         0% {opacity: 1;}
+         75%{opacity: 1;}
+         100% {opacity: 0;}
+      }
+      @-webkit-keyframes fadeIn2 {
+         0% {opacity: 1;}
+         75%{opacity: 1;}
+         100% {opacity: 0;}
+      }
+      @-webkit-keyframes fadeIn1 {
+         0% {opacity: 1;}
+         75%{opacity: 1;}
+         100% {opacity: 0;}
+      }
+      @-webkit-keyframes fadeInGo {
+         0% {opacity: 1;}
+         75% {opacity: 1;}
+         100% {opacity: 1;}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <table class="right-left" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+        <tr>
+          <td style="padding: 0px;">
+            <div class="arrow-tail-right">
+            </div>
+          </td>
+          <td style="padding: 0px;">
+              <div class="triangle-right">
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <table class="right-right" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+          <tr>
+            <td style="padding: 0px;">
+              <div class="arrow-tail-right">
+              </div>
+            </td>
+            <td style="padding: 0px;">
+                <div class="triangle-right">
+                </div>
+              </td>
+            </tr>
+          </table>
+        <table class="top-top" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+            <tr>
+            <td style="padding: 0px;">
+                <div class="triangle-up">
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td style="padding: 0px;  padding-left: 27%">
+              <div class="arrow-tail-top">
+              </div>
+            </td>
+          </tr>
+          </table>
+          <table class="top-bottom" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+              <tr>
+              <td style="padding: 0px;">
+                  <div class="triangle-up">
+                  </div>
+                </td>
+            </tr>
+            <tr>
+              <td style="padding: 0px;  padding-left: 27%">
+                <div class="arrow-tail-top">
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table class="bottom-bottom" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+            <tr>
+              <td style="padding: 0px;  padding-left: 27%">
+                <div class="arrow-tail-top">
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <td style="padding: 0px;">
+                <div class="triangle-down">
+                </div>
+              </td>
+          </tr>
+          </table>
+          <table class="bottom-top" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+            <tr>
+              <td style="padding: 0px;  padding-left: 27%">
+                <div class="arrow-tail-top">
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <td style="padding: 0px;">
+                <div class="triangle-down">
+                </div>
+              </td>
+          </tr>
+          </table>
+          <table class="left-left" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+            <tr>
+              <td style="padding: 0px;">
+                  <div class="triangle-left">
+                  </div>
+                </td>
+                <td style="padding: 0px;">
+                  <div class="arrow-tail-right">
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <table class="left-right" style="border-collapse: collapse; cellspacing: 0; cellpadding: 0;">
+              <tr>
+                <td style="padding: 0px;">
+                    <div class="triangle-left">
+                    </div>
+                  </td>
+                  <td style="padding: 0px;">
+                    <div class="arrow-tail-right">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+    </div>
+    <button id="begin">Start</button>
+    <div class="countdown-cont">
+        <div class="countdown countdown3">3</div>
+        <div class="countdown countdown2">2</div>
+        <div class="countdown countdown1">1</div>
+        <div class="countdown countdownGo">Go!</div>
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <script>
+      var array = ('.left-right .left-left .right-right .right-left .top-bottom .top-top .bottom-top .bottom-bottom').split(" ");
+      var active_arrow = "";
+      console.log(array);
+      var flag = false;
+      var correct =0;
+      var count = 0;
+      var keysEnabled = true;
+      $(document).ready(function(){
+      });
+        document.onkeydown = checkKey;
+
+        function checkKey(e) {
+
+            e = e || window.event;
+            if(keysEnabled){
+
+              var arrow = active_arrow.split("-")[0];
+              if (e.keyCode == '13'){
+                countdown();
+              }
+              if (e.keyCode == '38') {
+                keysEnabled = false;
+                $(active_arrow).removeClass("active");
+                  // up arrow
+                  if(arrow == '.top'){
+                      correct += 1;
+                  }
+                $(active_arrow).removeClass("active");
+                  setTimeout(function(){ new_arrow()}, 200);
+              }
+              else if (e.keyCode == '40') {
+                keysEnabled = false;
+                $(active_arrow).removeClass("active");
+                  // down arrow
+                  if(arrow == '.bottom'){
+                      correct += 1;
+                  }
+                  setTimeout(function(){ new_arrow()}, 200);
+              }
+              else if (e.keyCode == '37') {
+                keysEnabled = false;
+                $(active_arrow).removeClass("active");
+                 // left arrow
+                 if(arrow == '.left'){
+                     correct += 1;
+                 }
+                 setTimeout(function(){ new_arrow()}, 200);
+              }
+              else if (e.keyCode == '39') {
+                keysEnabled = false;
+                $(active_arrow).removeClass("active");
+                 // right arrow
+                 if(arrow == '.right'){
+                     correct += 1;
+                 }
+                 setTimeout(function(){ new_arrow()}, 200);
+              }
+            }
+
+        }
+      $('#begin').on('click', function(){
+              countdown();
+          });
+
+      function countdown(){
+        $('.countdown3').addClass("active");
+        $('.countdown2').addClass("active");
+        $('.countdown1').addClass("active");
+        $('.countdownGo').addClass("active");
+        setTimeout(function(){begin()}, 3000);
+      }
+
+      function begin(){
+        $('.countdown3').removeClass("active");
+        $('.countdown2').removeClass("active");
+        $('.countdown1').removeClass("active");
+        setTimeout(function(){removeGo()}, 1000);
+        flag= true;
+        setTimeout(function(){ alert(correct + " out of " + count); flag = false;}, 10000);
+        $(active_arrow).removeClass("active");
+        correct = 0;
+        count = 0;
+        new_arrow();
+      }
+      function removeGo(){
+        $('.countdownGo').removeClass("active");
+      }
+      function new_arrow(){
+        if(flag){
+          count += 1;
+          var rand = Math.floor(Math.random() * 8);
+          var select = array[rand];
+          $(select).addClass("active");
+          active_arrow = select;
+          keysEnabled = true;
+        }
+      }
+        </script>
+      </body>
+      </html>
