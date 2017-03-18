@@ -1,0 +1,36 @@
+<?php
+	require 'vendor/autoload.php';
+	$client = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+	$collection = $client->spikl->spikl;
+	$q = $_REQUEST["functionName"];
+		
+	if($q == "getNonce"){
+		$nonce = getNonce();		
+		//$result = $collection->insertOne([ '_id'=>'1', 'nonce'=>$nonce]);
+		
+	}
+
+	if($q == "verifyNonce"){
+		verifyNonce($_REQUEST["hello"] , "hedlo");
+				
+	}
+ 
+	function getNonce(){
+		$nonce = hash('sha512', "hedlo");
+		return $nonce;
+	}
+
+	function verifyNonce($data, $hash){
+		$filter = ['x' => ['$gt' => 1]];
+		$options = ['projection' => ['_id' => 0],'sort' => ['x' => -];
+
+//$query = new MongoDB\Driver\Query($filter, $options);
+
+		//$nonce = $collection->executeQuery('spikl.spikl', $query);
+		
+		$testHash = hash('sha512', $nonce . $data);
+		return $testHash == $hash;
+				
+	}
+	
+?>

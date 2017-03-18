@@ -1,0 +1,20 @@
+<?php   
+        require 'vendor/autoload.php';
+        date_default_timezone_set('UTC');
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $client->spikl->salts;
+        $users = $client->spikl->users;
+        $q = $_REQUEST["functionName"];
+        if($q == "searchByLang"){
+                $language = $_REQUEST["lang"];
+                $result = $users->findOne(['languages'=> ['language' => ['name' => $language]]]);
+		echo $language;
+               
+		 if($result != 0){
+                        echo "true";
+                }
+                else{
+                        echo "false";
+                }
+        }
+?>

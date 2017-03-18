@@ -1,0 +1,61 @@
+<?php
+	require 'vendor/autoload.php';
+	date_default_timezone_set('UTC');
+	$client = new MongoDB\Client("mongodb://localhost:27017");
+	$collection = $client->spikl->salts;
+	$users = $client->spikl->users;
+	$q = $_REQUEST["functionName"];
+	if($q == "getSalt"){
+		$factory = new \RandomLib\Factory;
+		$generator = $factory->getMediumStrengthGenerator();
+		$salt = $generator->generateString(16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz234567');
+		$date = date();
+		$insert = ['salt' => $salt, 'date' => $date];
+		$result = $collection->insertOne($insert);
+		$id = $result->getInsertedId();
+		$packet = json_encode(array('salt' => $salt, 'id'=>$id));
+		//$packet = ['salt' => $salt, 'id' => $id];
+		echo	$packet;
+		}
+
+	if($q == "checkAndUpdate"){
+		$pass = $_REQUEST["saltHash"];
+		$salt =  $_REQUEST["salt"];
+		$userName = $_REQUEST["userName"];
+		$result = $collection->findOne(['salt' => $salt]);
+		if($result != 0){
+			$collection->deleteOne(['salt' => $salt]);
+			//$users->insertOne(['password'=> $pass, 'userName'=> $userName, 'salt'=>$salt]);
+			echo "user was added";
+		}
+		else{
+			echo "user was not added";
+		}
+	}
+
+	if($q == "verifyNonce"){
+		if(verifyNonce($collection, $_REQUEST["hash"])){
+			echo "true";
+		}
+		else{
+			echo "false";
+		}
+
+	}
+
+	function getSalt($collection){
+		$size = mcrypt_get_iv_size(MCRYPT_CAST_256, MCRYPT_MODE_CFB);
+		$iv = mcrypt_create_iv($size, MCRYPT_DEV_RANDOM);
+		echo $iv;
+		$result = $collection->insertOne(['_id'=>'8', 'salt'=>$iv]);
+
+	}
+
+	function verifyNonce($collection, $data, $hash){
+		$result = $collection->findOne([ '_id'=>'8']);
+		$nonce = $result["salt"];
+		$testHash = hash('sha512', $nonce . $data );
+		return $testHash == $hash;
+
+	}
+?>

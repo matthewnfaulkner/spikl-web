@@ -1,0 +1,9 @@
+{
+    "require": {
+        "mongodb/mongodb": "^1.1",
+        "ircmaxell/random-lib": "^1.2",
+	"facebook/graph-sdk" : "~5.0"
+    }
+}
+
+

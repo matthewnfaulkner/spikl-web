@@ -1,0 +1,37 @@
+<?php
+	require 'vendor/autoload.php';
+	$client = new MongoDB\Client("mongodb://localhost:27017");
+	$collection = $client->spikl->spikl;
+	$q = $_REQUEST["functionName"];
+	if($q == "getNonce"){
+		$nonce = getNonce();		
+//		$result = $collection->insertOne([ '_id'=>'5', 'nonce'=>$nonce]);
+//		echo random_bytes(32);
+	//	$size = mcrypt_get_iv_size(MCRYPT_CAST_256, MCRYPT_MODE_CFB);
+    	//	$iv = mcrypt_create_iv($size, MCRYPT_DEV_RANDOM);
+	}
+
+	if($q == "verifyNonce"){
+		if(verifyNonce($collection, $_REQUEST["hello"] , "hedlo")){
+			echo "true";
+		}
+		else{
+			echo "false";
+		}
+				
+	}
+ 
+	function getNonce(){
+		$nonce = hash('sha512', "hedlo");
+		return $nonce;
+	}
+
+	function verifyNonce($collection, $data, $hash){
+		$result = $collection->findOne([ '_id'=>'1']);
+		$nonce = $result["nonce"];
+		$testHash = hash('sha512', $nonce . $data );
+		return $testHash == $hash;
+				
+	}
+	
+?>
