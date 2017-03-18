@@ -141,7 +141,10 @@
         width: 40px;
         position: absolute;
         top: 0%:
-      }
+	font-size: 20px;
+	font-family: arial;
+	color: red; 
+     }
       .countdown3{
         opacity: 0;
       }
@@ -312,7 +315,7 @@
     <script>
       var array = ('.left-right .left-left .right-right .right-left .top-bottom .top-top .bottom-top .bottom-bottom').split(" ");
       var active_arrow = "";
-      console.log(array);
+      var delay = 100;
       var flag = false;
       var correct =0;
       var count = 0;
@@ -338,7 +341,7 @@
                       correct += 1;
                   }
                 $(active_arrow).removeClass("active");
-                  setTimeout(function(){ new_arrow()}, 200);
+                  setTimeout(function(){ new_arrow()}, delay);
               }
               else if (e.keyCode == '40') {
                 keysEnabled = false;
@@ -347,7 +350,7 @@
                   if(arrow == '.bottom'){
                       correct += 1;
                   }
-                  setTimeout(function(){ new_arrow()}, 200);
+                  setTimeout(function(){ new_arrow()}, delay);
               }
               else if (e.keyCode == '37') {
                 keysEnabled = false;
@@ -356,7 +359,7 @@
                  if(arrow == '.left'){
                      correct += 1;
                  }
-                 setTimeout(function(){ new_arrow()}, 200);
+                 setTimeout(function(){ new_arrow()}, delay);
               }
               else if (e.keyCode == '39') {
                 keysEnabled = false;
@@ -365,7 +368,7 @@
                  if(arrow == '.right'){
                      correct += 1;
                  }
-                 setTimeout(function(){ new_arrow()}, 200);
+                 setTimeout(function(){ new_arrow()}, delay);
               }
             }
 
