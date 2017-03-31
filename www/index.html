@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 iOS CSS theme styles-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <!-- Path to Framework7 iOS related color styles -->
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/spikl.css">
+      <link rel="stylesheet" href="css/icons.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/circle.css">
+      <link rel="stylesheet" href="css/framework7-icons.css">
+
+  </head>
+  <body>
+
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <!-- Views -->
+    <!--<div class="content-block splash" id="splash"></div>-->
+
+    <div class="login-screen">
+      <!-- Default view-page layout -->
+
+      <div class="view">
+        <div class="popup popup-signup" id="signup-popup">
+              <div class="navbar spikl-nav">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="#" class="back-signin close-popup">
+                          <i class="f7-icons backIcon">chevron_left</i>
+                        </a>
+                    </div>
+                    <div class="center">sign up</div>
+                    <div class="right">
+
+                    </div>
+                </div>
+            </div>
+            <form  id="signUpForm" enctype="multipart/form-data" class="signUpForm">
+              <div class="list-block signup-listblock">
+              <ul style="background-color: transparent; border-top-style">
+                <!-- Text inputs -->
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner" style="border-box: 0">
+                      <div class="item-title label">York Email</div>
+                      <div class="item-input">
+                        <table>
+                          <tr>
+                            <td>
+                              <input class="signup-input" type="text" placeholder="*York Email" id="signup-email" name="email">
+                            </td>
+                            <td>
+                              <div class ="load-cont">
+                                <div id="email-load" class="load">
+                                  <div class=inner-load>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="email-rulez"class="rulez">
+                                <div class="check-cont">
+                                  <i id="email-check-cross" class="f7-icons check-cross"></i>
+                                </div>
+                                <div id="email-rule-text" class="rule-text"></div>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <table>
+                          <tr>
+                            <td>
+                              <input class="signup-input" type="password" placeholder="*Password" id="signup-password">
+                            </td>
+                            <td>
+                              <div class ="load-cont">
+                                <div id="password-load" class="load">
+                                  <div class=inner-load>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="password-rulez" class="rulez">
+                                <div class="check-cont">
+                                  <i id="password-check-cross" class="f7-icons check-cross"></i>
+                                </div>
+                                <div id="password-rule-text" class="rule-text"></div>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Re-enter</div>
+                      <div class="item-input">
+                        <table>
+                          <tr>
+                            <td>
+                              <input class="signup-input" type="password" placeholder="*Re-enter Password" id="signup-password-ver">
+                            </td>
+                            <td>
+                              <div class ="load-cont">
+                                <div id="password-ver-load" class="load">
+                                  <div class=inner-load>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="password-ver-rulez" class="rulez">
+                                <div class="check-cont">
+                                  <i id="password-ver-check-cross" class="f7-icons check-cross"></i>
+                                </div>
+                                <div id="password-ver-rule-text" class="rule-text"></div>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">First Name</div>
+                      <div class="item-input">
+                          <input id="signup-first"class="signup-input" type="text"  placeholder="First Name" name="firstName">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Last Name</div>
+                      <div class="item-input">
+                          <input id="signup-last"class="signup-input" type="text"  placeholder="Last Name" name="lastName">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- Date -->
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Birth date</div>
+                      <div class="item-input">
+                        <input id="signup-dob"class="signup-input" type="date" placeholder="Birth day" value="2014-04-30" name="date">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- Date time-->
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Gender</div>
+                      <div  class="item-input">
+                        <select id="signup-gender" name="gender">
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Wolfkin</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Studying</div>
+                      <div class="item-input">
+                          <input id="signup-course"class="signup-input" type="text"  placeholder="Course" name="course">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- Slider (Range input) -->
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Nationality</div>
+                      <div class="item-input">
+                        <select style="color: grey" name="nationality" id="signup-nationality">
+                          <option value="">-- select one --</option>
+                          <option value="afghan">Afghan</option>
+                          <option value="albanian">Albanian</option>
+                          <option value="algerian">Algerian</option>
+                          <option value="american">American</option>
+                          <option value="andorran">Andorran</option>
+                          <option value="angolan">Angolan</option>
+                          <option value="antiguans">Antiguans</option>
+                          <option value="argentinean">Argentinean</option>
+                          <option value="armenian">Armenian</option>
+                          <option value="australian">Australian</option>
+                          <option value="austrian">Austrian</option>
+                          <option value="azerbaijani">Azerbaijani</option>
+                          <option value="bahamian">Bahamian</option>
+                          <option value="bahraini">Bahraini</option>
+                          <option value="bangladeshi">Bangladeshi</option>
+                          <option value="barbadian">Barbadian</option>
+                          <option value="barbudans">Barbudans</option>
+                          <option value="batswana">Batswana</option>
+                          <option value="belarusian">Belarusian</option>
+                          <option value="belgian">Belgian</option>
+                          <option value="belizean">Belizean</option>
+                          <option value="beninese">Beninese</option>
+                          <option value="bhutanese">Bhutanese</option>
+                          <option value="bolivian">Bolivian</option>
+                          <option value="bosnian">Bosnian</option>
+                          <option value="brazilian">Brazilian</option>
+                          <option value="british">British</option>
+                          <option value="bruneian">Bruneian</option>
+                          <option value="bulgarian">Bulgarian</option>
+                          <option value="burkinabe">Burkinabe</option>
+                          <option value="burmese">Burmese</option>
+                          <option value="burundian">Burundian</option>
+                          <option value="cambodian">Cambodian</option>
+                          <option value="cameroonian">Cameroonian</option>
+                          <option value="canadian">Canadian</option>
+                          <option value="cape verdean">Cape Verdean</option>
+                          <option value="central african">Central African</option>
+                          <option value="chadian">Chadian</option>
+                          <option value="chilean">Chilean</option>
+                          <option value="chinese">Chinese</option>
+                          <option value="colombian">Colombian</option>
+                          <option value="comoran">Comoran</option>
+                          <option value="congolese">Congolese</option>
+                          <option value="costa rican">Costa Rican</option>
+                          <option value="croatian">Croatian</option>
+                          <option value="cuban">Cuban</option>
+                          <option value="cypriot">Cypriot</option>
+                          <option value="czech">Czech</option>
+                          <option value="danish">Danish</option>
+                          <option value="djibouti">Djibouti</option>
+                          <option value="dominican">Dominican</option>
+                          <option value="dutch">Dutch</option>
+                          <option value="east timorese">East Timorese</option>
+                          <option value="ecuadorean">Ecuadorean</option>
+                          <option value="egyptian">Egyptian</option>
+                          <option value="emirian">Emirian</option>
+                          <option value="equatorial guinean">Equatorial Guinean</option>
+                          <option value="eritrean">Eritrean</option>
+                          <option value="estonian">Estonian</option>
+                          <option value="ethiopian">Ethiopian</option>
+                          <option value="fijian">Fijian</option>
+                          <option value="filipino">Filipino</option>
+                          <option value="finnish">Finnish</option>
+                          <option value="french">French</option>
+                          <option value="gabonese">Gabonese</option>
+                          <option value="gambian">Gambian</option>
+                          <option value="georgian">Georgian</option>
+                          <option value="german">German</option>
+                          <option value="ghanaian">Ghanaian</option>
+                          <option value="greek">Greek</option>
+                          <option value="grenadian">Grenadian</option>
+                          <option value="guatemalan">Guatemalan</option>
+                          <option value="guinea-bissauan">Guinea-Bissauan</option>
+                          <option value="guinean">Guinean</option>
+                          <option value="guyanese">Guyanese</option>
+                          <option value="haitian">Haitian</option>
+                          <option value="herzegovinian">Herzegovinian</option>
+                          <option value="honduran">Honduran</option>
+                          <option value="hungarian">Hungarian</option>
+                          <option value="icelander">Icelander</option>
+                          <option value="indian">Indian</option>
+                          <option value="indonesian">Indonesian</option>
+                          <option value="iranian">Iranian</option>
+                          <option value="iraqi">Iraqi</option>
+                          <option value="irish">Irish</option>
+                          <option value="israeli">Israeli</option>
+                          <option value="italian">Italian</option>
+                          <option value="ivorian">Ivorian</option>
+                          <option value="jamaican">Jamaican</option>
+                          <option value="japanese">Japanese</option>
+                          <option value="jordanian">Jordanian</option>
+                          <option value="kazakhstani">Kazakhstani</option>
+                          <option value="kenyan">Kenyan</option>
+                          <option value="kittian and nevisian">Kittian and Nevisian</option>
+                          <option value="kuwaiti">Kuwaiti</option>
+                          <option value="kyrgyz">Kyrgyz</option>
+                          <option value="laotian">Laotian</option>
+                          <option value="latvian">Latvian</option>
+                          <option value="lebanese">Lebanese</option>
+                          <option value="liberian">Liberian</option>
+                          <option value="libyan">Libyan</option>
+                          <option value="liechtensteiner">Liechtensteiner</option>
+                          <option value="lithuanian">Lithuanian</option>
+                          <option value="luxembourger">Luxembourger</option>
+                          <option value="macedonian">Macedonian</option>
+                          <option value="malagasy">Malagasy</option>
+                          <option value="malawian">Malawian</option>
+                          <option value="malaysian">Malaysian</option>
+                          <option value="maldivan">Maldivan</option>
+                          <option value="malian">Malian</option>
+                          <option value="maltese">Maltese</option>
+                          <option value="marshallese">Marshallese</option>
+                          <option value="mauritanian">Mauritanian</option>
+                          <option value="mauritian">Mauritian</option>
+                          <option value="mexican">Mexican</option>
+                          <option value="micronesian">Micronesian</option>
+                          <option value="moldovan">Moldovan</option>
+                          <option value="monacan">Monacan</option>
+                          <option value="mongolian">Mongolian</option>
+                          <option value="moroccan">Moroccan</option>
+                          <option value="mosotho">Mosotho</option>
+                          <option value="motswana">Motswana</option>
+                          <option value="mozambican">Mozambican</option>
+                          <option value="namibian">Namibian</option>
+                          <option value="nauruan">Nauruan</option>
+                          <option value="nepalese">Nepalese</option>
+                          <option value="new zealander">New Zealander</option>
+                          <option value="ni-vanuatu">Ni-Vanuatu</option>
+                          <option value="nicaraguan">Nicaraguan</option>
+                          <option value="nigerien">Nigerien</option>
+                          <option value="north korean">North Korean</option>
+                          <option value="northern irish">Northern Irish</option>
+                          <option value="norwegian">Norwegian</option>
+                          <option value="omani">Omani</option>
+                          <option value="pakistani">Pakistani</option>
+                          <option value="palauan">Palauan</option>
+                          <option value="panamanian">Panamanian</option>
+                          <option value="papua new guinean">Papua New Guinean</option>
+                          <option value="paraguayan">Paraguayan</option>
+                          <option value="peruvian">Peruvian</option>
+                          <option value="polish">Polish</option>
+                          <option value="portuguese">Portuguese</option>
+                          <option value="qatari">Qatari</option>
+                          <option value="romanian">Romanian</option>
+                          <option value="russian">Russian</option>
+                          <option value="rwandan">Rwandan</option>
+                          <option value="saint lucian">Saint Lucian</option>
+                          <option value="salvadoran">Salvadoran</option>
+                          <option value="samoan">Samoan</option>
+                          <option value="san marinese">San Marinese</option>
+                          <option value="sao tomean">Sao Tomean</option>
+                          <option value="saudi">Saudi</option>
+                          <option value="scottish">Scottish</option>
+                          <option value="senegalese">Senegalese</option>
+                          <option value="serbian">Serbian</option>
+                          <option value="seychellois">Seychellois</option>
+                          <option value="sierra leonean">Sierra Leonean</option>
+                          <option value="singaporean">Singaporean</option>
+                          <option value="slovakian">Slovakian</option>
+                          <option value="slovenian">Slovenian</option>
+                          <option value="solomon islander">Solomon Islander</option>
+                          <option value="somali">Somali</option>
+                          <option value="south african">South African</option>
+                          <option value="south korean">South Korean</option>
+                          <option value="spanish">Spanish</option>
+                          <option value="sri lankan">Sri Lankan</option>
+                          <option value="sudanese">Sudanese</option>
+                          <option value="surinamer">Surinamer</option>
+                          <option value="swazi">Swazi</option>
+                          <option value="swedish">Swedish</option>
+                          <option value="swiss">Swiss</option>
+                          <option value="syrian">Syrian</option>
+                          <option value="taiwanese">Taiwanese</option>
+                          <option value="tajik">Tajik</option>
+                          <option value="tanzanian">Tanzanian</option>
+                          <option value="thai">Thai</option>
+                          <option value="togolese">Togolese</option>
+                          <option value="tongan">Tongan</option>
+                          <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+                          <option value="tunisian">Tunisian</option>
+                          <option value="turkish">Turkish</option>
+                          <option value="tuvaluan">Tuvaluan</option>
+                          <option value="ugandan">Ugandan</option>
+                          <option value="ukrainian">Ukrainian</option>
+                          <option value="uruguayan">Uruguayan</option>
+                          <option value="uzbekistani">Uzbekistani</option>
+                          <option value="venezuelan">Venezuelan</option>
+                          <option value="vietnamese">Vietnamese</option>
+                          <option value="welsh">Welsh</option>
+                          <option value="yemenite">Yemenite</option>
+                          <option value="zambian">Zambian</option>
+                          <option value="zimbabwean">Zimbabwean</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content signup-li">
+                    <div class="item-inner">
+                      <div class="item-title label">Picture</div>
+                      <div class="item-input">
+                        <div class="signup-pic-cont">
+                          <input class="imgInput" type="file"  id="imgInput" name="img">
+                          <label class"imgInputLabel" style="width: 100%; height: 100%; text-align:center; padding-top: 10%" for="imgInput"><img src="img/profile.png"></label>
+                        </div>
+
+                      </div>
+                      </div>
+                    </div>
+                  </li>
+
+                <!-- Textarea -->
+              </ul>
+              </div>
+            </form>
+            <div class="signup-form-error-cont">
+              <p class="signup-form-error">Please make sure all required fields are checked.</p>
+            </div>
+            <div class="signup-button-cont">
+              <button class="button signup-button">SIGN UP</button>
+            </div>
+            <div class="signup-form-error-cont">
+              <p class="signup-form-error">Please make sure all required fields are checked.</p>
+            </div>
+        </div>
+        <div class="page">
+          <!-- page-content has additional login-screen content -->
+
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">
+                            get cultured. go global.
+            </div>
+            <!-- Login form -->
+            <form>
+              <div class="list-block">
+                <ul >
+                  <li class="item-content" style="padding: 0px;">
+                    <div class="login-inner">
+                      <div class="item-input">
+                        <input class="login-input" type="text" id="login-username" name="username" placeholder="Username">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content" style="padding: 0px;">
+                    <div class="login-inner">
+                      <div class="item-input">
+                        <input class="login-input" type="password" id="login-password" name="password" placeholder="Password">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="signin-error">
+                    </div>
+                    <div class="login-inner">
+                      <a href='#' class="forgotten">forgotten password?</a>
+                  </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <div class="login-button-cont">
+                      <a href="#" class="button login-button">ENTER</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="login-inner" style="padding-top: 5px;">
+                      <a href='#' class="signup">New to SPIKL?</a>
+                  </div>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+                  <div style="height: 100%; width: 100%; background-color: rgba(255, 0, 0, 0.4); position: absolute; top: 0">
+
+        </div>
+
+        <!-- Top Navbar-->
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div data-page="home" class="page toolbar- ">
+          <!-- Page, "data-page" contains page name -->
+            <div class="toolbar tabbar main-menu">
+                <div class="toolbar-inner">
+                    <a href="#search" class="tab-link main-menu" id="search-tab">
+                        <i class="f7-icons">search</i>
+                    </a>
+                    <a href="#profile" class="tab-link main-menu" id="profile-tab">
+                        <i class="f7-icons">person</i>
+                    </a>
+
+                    <a href="#home" class="tab-link main-menu middle spikl-orange" id="main-tab">SPIKL</a>
+                    <a href="#messenger" class="tab-link main-menu" id="messenger-tab">
+                        <i class="f7-icons">chat_fill</i>
+                    </a>
+                    <a href="#settings" class="tab-link main-menu" id="settings-tab">
+                        <i class="f7-icons">gear_fill</i>
+                    </a>
+
+                </div>
+            </div>
+          <div data-page="index" class="page mainpage">
+               <div class="page-content spikl-page">
+            <!-- Scrollable page content -->
+                <div class="tabs" style="height: 90%">
+                        <div class="tab active" id="home" style="height: 100%">
+                            <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
+                                 <div class="content-block welcome-message">
+                                    <p><span class="greeting-word">Hello, </span><span class="greeting-name">Kitten!</span></p>
+                                 </div>
+                                <div class="content-block scroll-contacts">
+                                    <div class="content-block header">
+                                        <p>Your Spiklers</p>
+                                    </div>
+                                    <div class="full-swiper-container">
+                                        <div class="content-block contact-container">
+                                            <div class="swiper-container main-page-swiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide main-page-contact">
+                                                        <div class="contact-container">
+                                                            <div class="image-container" id="image-container0">
+                                                            </div>
+                                                            <p class="name-contact">Kitten1</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide main-page-contact">
+                                                        <div class="contact-container">
+                                                            <div class="image-container active" id="image-container1">
+                                                            </div>
+                                                            <p class="name-contact">Kitten2</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide main-page-contact">
+                                                        <div class="contact-container">
+                                                            <div class="image-container" id="image-container2">
+                                                            </div>
+                                                            <p class="name-contact">Kitten3</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide main-page-contact">
+                                                        <div class="contact-container">
+                                                            <div class="image-container" id="image-container3">
+                                                            </div>
+                                                            <p class="name-contact">Kitten4</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide main-page-contact">
+                                                        <div class="contact-container">
+                                                            <div class="image-container" id="image-container4">
+                                                            </div>
+                                                            <p class="name-contact">Kitten5</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content-block notes-container" id="notes-cont" style="margin-bottom: 0px; margin-top: 0px">
+                                        <div class="search-notes-cont" id="search-bar">
+                                            <input class="inputs-notes" type="text" placeholder="NOTES" >
+                                            <a href="#" class="search-notes-icon">
+                                                <i class="f7-icons">search</i>
+                                            </a>
+                                        </div>
+                                        <div class="content-block notes-button-container">
+                                            <table class="notes-buttons">
+                                                <tr>
+                                                    <td>
+                                                        <div class="notes-button">
+                                                            <a href="#" class="indie-note-button-cont add-text-note button">
+                                                                <i class="f7-icons">add</i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                         <div class="notes-button">
+                                                            <a href="#" onclick="closeNotes1()" class="indie-note-button-cont add-voice-note button">
+                                                                <i class="f7-icons">mic</i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                         <div class="notes-button">
+                                                            <a href="#notes" onclick="testSave()" class="indie-note-button-cont button">
+                                                               <i class="f7-icons">camera</i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div class="page-content notes-sub-container infinite-scroll" id="notes-block">
+                                            <div class="left notes-sub-container-left" id="notes-left">
+                                            </div>
+                                            <div class="right notes-sub-container-right" id="notes-right">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab" id="profile" style="height: 100%">
+                            <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
+                                <div class="content-block profile-pic-container">
+
+                                    <div class="profile-pic" id="main-profile-pic">
+                                        <img id="profilepicmain" style="height: 200px; width: 200px">
+                                    </div>
+                                    <a href="#" class="floating-button change-profile-pic" style="position: relative; left: 70px; top: -40px;">
+                                            <i class="f7-icons" style="border-radius: 100%; background-color: #FF6600; color: white; width: 30px; height: 30px; line-height: 30px; font-size: 17px">reload</i>
+                                     </a>
+                                 </div>
+                                <div class="content-block profile-info-container">
+                                    <div class="profile-data profile-name">
+                                        Kitten
+                                    </div>
+                                    <div class="profile-data profile-uni">
+                                        University of Kittens
+                                    </div>
+
+                                    <div class="content-block" style="margin-top: 10px;">
+                                        <table  style="text-align: center; width: 100%">
+                                            <tr>
+                                                <td>
+                                                    <div class="swiper-button-prev swiper-button" style="position:static; margin:auto"></div>
+                                                </td>
+                                                <td>
+
+                                                    <div class="swiper-container profile-page-swiper lang-swiper">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide" style="">
+                                                                <div class="vacant c100 p0 orange lang-ring" id="lang-ring0">
+                                                                    <span>ENG</span>
+                                                                    <div class="slice">
+                                                                        <div class="bar"></div>
+                                                                        <div class="fill"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide" style="">
+                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring1">
+                                                                    <span>+</span>
+                                                                    <div class="slice">
+                                                                        <div class="bar"></div>
+                                                                        <div class="fill"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide" style="">
+                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring2">
+                                                                    <span>+</span>
+                                                                    <div class="slice">
+                                                                        <div class="bar"></div>
+                                                                        <div class="fill"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide" style="">
+                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring3">
+                                                                    <span>+</span>
+                                                                    <div class="slice">
+                                                                        <div class="bar"></div>
+                                                                        <div class="fill"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="swiper-button-next" style="position:static; margin:auto"></div>
+                                                </td>
+                                                </tr>
+                                            </table>
+
+                                            </div>
+                                            <div class="content-block" style="margin-top: 10px;">
+                                                    <div class="profile-message-cont">
+                                                        <p class="profile-message">Add a profile description.</p>
+                                                    </div>
+                                            </div>
+
+                                    </div>
+                            </div>
+                        </div>
+                         <div class="tab" id="search">
+                              <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
+                                  <div class="content-block search-bar" style="margin-bottom: 5px">
+                                      <table style="width: 100%;">
+                                          <tr>
+                                              <td style="text-align: center; padding-right: 3px;">
+                                                  <a href="#" id="search-bar-language" class="button search-bar-button active">LANGUAGE</a>
+                                              </td>
+                                              <td style="text-align: center; padding-right: 3px;">
+                                                  <a href="#"  id="search-bar-location" class="button search-bar-button">LOCATION</a>
+                                              </td>
+                                              <td style="text-align: center; padding-right: 3px;">
+                                                  <div class="button search-bar-button">
+                                                    <input id="search-bar-input" href="#" type="text" class="" style="width: 100%; background-color: transparent; border-style: none" placeholder="search">
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                      </table>
+                                      <div class="list-block search-page-list-block" style="margin-bottom: 0px">
+                                            <ul style="background-color: transparent">
+                                                <li class="item-content search-lang">
+                                                    <div class="item-input">
+                                                        <input class="autocomplete-dropdown-search-page language" type="text" placeholder="Language" id="autocomplete-dropdown-search-page" value="" style="font-size: 14px; color: white; text-align: left;">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                  </div>
+                                  </div>
+                                  <div style="position: absolute; height: 78%; width: 100%">
+                                  <div class="page-content infinite-scroll" id="search-infinite-scroll" style="padding-top: 0px; height: 100%">
+
+                                       <div class="list-block search-page-list-block" id="search-page-list-block"  style="height: 100%">
+                                            <ul class="infinite-scroll" id="search-page-list" style="background-color: transparent;">
+
+                                            </ul>
+
+                                          </div>
+                                  </div>
+                                    </div>
+                             <div class="popup popup-user" id="search-popup" style="height: 93%; background-color: #2B2C2B;">
+                                     <div class="navbar spikl-nav">
+                                       <div class="navbar-inner">
+                                           <div class="left">
+                                               <a href="#" class="back-signin close-popup">
+                                                 <i class="f7-icons backIcon">chevron_left</i>
+                                               </a>
+                                           </div>
+                                           <div class="center">Profile</div>
+                                           <div class="right">
+
+                                           </div>
+                                       </div>
+                                   </div>
+                                    <div class="content-block popup-profile-pic-container">
+
+                                    <div class="profile-pic" id="popup-main-profile-pic">
+
+                                    </div>
+
+                                            <i class="f7-icons floating-pic-button mail">email</i>
+
+                                             <i id="floating-button-chat" class="f7-icons floating-pic-button chat" >chat</i>
+
+                                 </div>
+                                <div class="content-block popup-profile-info-container">
+                                    <div class="profile-data profile-name" id="popup-name">
+                                        Kitten
+                                    </div>
+                                    <div class="profile-data profile-uni" id="popup-uni">
+                                        University of Kittens
+                                    </div>
+
+                                    <div class="content-block" style="margin-top: 10px;">
+                                        <table  style="text-align: center; width: 100%">
+                                            <tr>
+                                                <td>
+                                                    <div class="swiper-button-prev swiper-button" style="position:static; margin:auto"></div>
+                                                </td>
+                                                <td>
+
+                                                    <div class="swiper-container popup-page-swiper lang-swiper" id="popup-page-swiper">
+                                                        <div class="swiper-wrapper" id="popup-page-swiper-wrapper">
+
+                                                        </div>
+
+                                                        </div>
+
+
+                                                </td>
+                                                <td>
+                                                    <div class="swiper-button-next" style="position:static; margin:auto"></div>
+                                                </td>
+                                                </tr>
+                                            </table>
+
+                                            </div>
+                                            <div class="content-block" style="margin-top: 10px; margin-bottom: 0px">
+                                                    <div class="profile-message-cont">
+                                                        <p class="profile-message">Add a profile description.</p>
+                                                    </div>
+                                            </div>
+
+
+                                    </div>
+                                 </div>
+                        </div>
+                         <div class="tab" id="messenger" style="height: 100%">
+                             <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
+                                  <div class="content-block search-bar" style="margin-bottom: 5px; margin-top : 0px">
+                                      <div class="list-block search-page-list-block" style="margin-bottom: 0px">
+                                            <ul style="background-color: transparent" >
+                                                <li class="item-content search-lang">
+                                                    <div class="item-input">
+                                                        <input class="autocomplete-dropdown-search-page language" type="text" placeholder="Search Messages" id="autocomplete-dropdown-chat-page" value="" style="font-size: 10px; color: white; text-align: left;">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                  </div>
+                                  <div style="position: absolute; top 30%; height: 70%; width: 100%">
+                                      <div class="page-content " id="chat-infinite-scroll" style="padding-top: 0px; height: 100%">
+
+                                           <div class="list-block search-page-list-block" id="chat-page-list-block"  style="height: 100%">
+                                                <ul class="infinite-scroll" id="chat-page-list" style="background-color: transparent;">
+
+                                                </ul>
+
+                                              </div>
+                                        </div>
+                                    </div>
+                             <div class="page popup popup-chat toolbar-fixed" data-popup=".popup-chat" id="chat-popup" style="height:90%; background-color: #2B2C2B;">
+                               <div class="navbar spikl-nav">
+                                 <div class="navbar-inner">
+                                     <div class="left">
+                                         <a href="#" class="back-signin close-popup">
+                                           <i class="f7-icons backIcon">chevron_left</i>
+                                         </a>
+                                     </div>
+                                     <div class="center message-title">Kitten</div>
+                                     <div class="right">
+
+                                     </div>
+                                 </div>
+                                  </div>
+                                  <div class="toolbar messagebar">
+                                      <div class="toolbar-inner">
+                                        <textarea placeholder="Message"></textarea>
+                                          <a href="#" class="link">Send</a>
+                                        </div>
+                                  </div>
+                                  <div class="page-content messages-content" style="margin-top: 44px; position: static!important; height:80%!important">
+                                      <div class="messages">
+
+                                      </div>
+                                  </div>
+
+                             </div>
+                        </div>
+                         <div class="tab" id="settings">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+          </div>
+
+
+      </div>
+
+    </div>
+    <div class="page-content modal-overlay modal-overlay-invisible">
+       <div data-page="over" class="page" style="background-color: transparent">
+        <div class="page-content spikl-page" id="addLangModal">
+        <div class="add-note-input-cont-invisible">
+                <input class="add-note-input spikler" placeholder="tag to spikler" name="spikler">
+                <input class="add-note-input title" placeholder="add title" name="title">
+                <textarea class="add-note-input body" placeholder="add note"></textarea>
+                <a href="#" class="submit-note">
+                    add note
+                </a>
+        </div>
+        <div class="change-lang-cont-invisible">
+            <table class="change-lang-table" >
+                <tr>
+                    <td>
+                        <div class="chang-lang-button">
+                            <a href="#" class="chang-lang-button-cont decrease-lang-prof button" style=" line-height: 60px">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td     style ="display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        box-sizing: border-box;">
+                        <div class="c100 p0 big orange" id="change-lang-prof" style="margin:auto; font-size: 100px !important;">
+                            <span>ENG</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="chang-lang-button">
+                            <a href="#" class="chang-lang-button-cont increase-lang-prof button" style=" line-height: 60px">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="content-block">
+                <a href="#" class="submit-lang-update">
+                            DONE
+                </a>
+            </div>
+        </div>
+
+        <div class="add-new-lang-cont-invisible">
+                <div class="content-block add-new-lang-form" style="text-align:center;">
+                                        <p>ADD A LANGUAGE</p>
+
+                    <div class="list-block">
+                        <ul style="background-color: none">
+                            <li class="item-content search-lang" style="background-color: none">
+                                <div class="item-input">
+                                    <input type="text" placeholder="Language" id="autocomplete-dropdown" value="" style="text-align: center;">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <a href="#" class="submit-new-lang" style="position: relative">
+                                ADD
+                        </a>
+                    </div>
+                </div>
+                   </div>
+                </div>
+            </div>
+    </div>
+    <div id="custom-overlay">
+          <div class="login-screen-title">
+          </div>
+          <div style="margin-left: 40%; width:100%">
+            <table class="splash-table">
+              <tr>
+                <td>
+                  <i class="f7-icons loading-dot" id="loading-dot1">circle_fill</i>
+                </td>
+                <td>
+                  <i class="f7-icons loading-dot" id="loading-dot2">circle_fill</i>
+                </td>
+                <td>
+                  <i class="f7-icons loading-dot" id="loading-dot3">circle_fill</i>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    </div>
+
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/sha512.js"></script>
+    <script type="text/javascript" src="js/spikl.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  </body>
+</html>
