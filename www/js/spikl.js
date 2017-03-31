@@ -32,7 +32,11 @@ function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(york.ac.uk)$/;
   return re.test(email);
 }
-
+document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
+document.documentElement.style.setProperty('--spiklbkDarkColour', '#ffffff');
+document.documentElement.style.setProperty('--spiklbkLightColour', '#ffffff');
+document.documentElement.style.setProperty('--spiklTextColour', '#2b2b2b');
+document.documentElement.style.setProperty('--spiklAltTextColour', '#2b2b2b');
 login("mf840@york.ac.uk", "Password1");
 function login(email, pword){
   var nonce ="";
@@ -294,9 +298,8 @@ function onDeviceReady() {
 
 var mainPageSwiper = myApp.swiper('.main-page-swiper', {
   spaceBetween: 0,
-  slidesPerView: 3,
+  slidesPerView: 4,
   freeModeMomentum: true,
-  loop: true
 
 });
 
@@ -366,6 +369,11 @@ $$('.increase-lang-prof').on('click', function () {
 
   }
   var currentPopupUserEmail = "";
+
+$$('#home').on('show', function () {
+  loadFriends();
+});
+
 $$('#profile').on('show', function () {
   loadLanguageProf();
     profilePageSwiper = myApp.swiper('.profile-page-swiper', {
@@ -469,29 +477,12 @@ $$('#profile').on('show', function () {
      var languages = ('Afrikaans Albanian Amharic Arabic Bahasa Bengali Bosnian Bravanese Bulgarian Catalan Chinese Croatian Czech Danish Dutch Estonian English Farsi Finnish French German Greek Gujarati Haitian Creole Hebrew Hindi Hmong Hungarian Icelandic Italian Japanese Javanese Kashmiri Kazakh Khmer Korean Laotian Latvian Lithuanian Macedonian Malay Malayalam Mandinka Marathi Norwegian Oromo Polish Portuguese Punjabi Romanian Russian Serbian Sinhalese Slovak Somali Spanish (Iberian) Spanish (Latin) SudaneseArabic Swedish Tagalog Tamil Telegu Thai Turkish Ukrainian Urdu Vietnamese').split(' ');
      var locations = ('York London Birmingham Manchester').split(' ');
      var searchTerm = {"language": "", "location": "", "name": ""};
-     var users1 = {'users': [
-                            {"id": 0, "name": "John", "Uni": "University of York", "pic": "img/kitten.jpg", "languages": [
-                                                                                                  {"name": "ENG", "prof": 1},
-                                                                                                  {"name": "FR", "prof": 3}]},
-                            {"id": 1, "name": "Sam", "Uni": "University of York", "pic": "img/kitten.jpg",  "languages": [
-                                                                                                  {"name": "MAN", "prof": 5},
-                                                                                                  {"name": "GER", "prof": 3}]},
-                            {"id": 2, "name": "Joan", "Uni": "University of Manchester", "pic": "img/kitten.jpg", "languages": [
-                                                                                                  {"name": "DAN", "prof": 1},
-                                                                                                  {"name": "ENG", "prof": 1}]},
-                            {"id": 3, "name": "Nicky", "Uni": "University of York", "pic": "img/nicky.jpeg", "languages": [
-                                                                                                  {"name": "MAL", "prof": 5},
-                                                                                                  {"name": "ENG", "prof": 0}]},
-                            {"id": 4, "name": "Matt", "Uni": "University of York", "pic": "img/arnie.jpg", "languages": [
-                                                                                                  {"name": "ENG", "prof": 5},
-                                                                                                  {"name": "PIG", "prof": 5}]},
-                            {"id": 5, "name": "Dog", "Uni": "University of Dogs", "pic": "img/kitten.jpg", "languages": [
-                                                                                                  {"name": "BARK", "prof": 5}
-                                                                                                  ]}
-
-                            ]};
 
 var users = [];
+var friends = [];
+friends["nadc500@york.ac.uk"] = {"name" : "nicky", "pic" :"img/nicky.jpeg"};
+var myLanguages =  [];
+var myConversations = [];
 
 
      var autocompleteDropdownSimple = myApp.autocomplete({
@@ -1038,10 +1029,15 @@ mainPageSwiper.on('Tap', function(){
 //  document.documentElement.style.setProperty('--spiklbkDarkColour', 'purple');
 ///  document.documentElement.style.setProperty('--spiklbkLightColour', 'blue');
 //  document.documentElement.style.setProperty('--spiklTextColour', 'green');
-    if (activeIndex >= 0){
-        mainPageSwiper.slides[activeIndex].childNodes[1].childNodes[1].className = 'image-container';
+    //if (activeIndex >= 0){
+    //    mainPageSwiper.slides[activeIndex].childNodes[1].childNodes[1].className = 'image-container';
+    // }
+    var prevActiveContact = $$('.contact-container')[0].getElementsByClassName("active")[0];
+    $$(prevActiveContact).toggleClass("active");
+    var activeContact =mainPageSwiper.slides[mainPageSwiper.clickedIndex].getElementsByClassName("image-container")[0];
+    if(prevActiveContact != activeContact){
+      $$(activeContact).toggleClass("active");
     }
-    mainPageSwiper.slides[mainPageSwiper.clickedIndex].childNodes[1].childNodes[1].className += " active"
     activeIndex = mainPageSwiper.clickedIndex;
 });
 
@@ -1244,10 +1240,21 @@ function testLang(){
 
 }
 
+function loadFriends(){
+  var i = 0;
+  if(friends == []){
+    $$('.main-page-swiper')[0].innerHTML = "No Spiklers";
+  }
+  for(var friend in friends){
+    mainPageSwiper.appendSlide(buildContact(friends[friend].name, friends[friend].pic));
+  }
+}
 
-var myLanguages =  [];
-
-var myConversations = [];
+function buildContact(name, pic){
+  var html ='<div class="swiper-slide main-page-contact"><div class="contact-container"><img class="image-container" src="' + pic + '">';
+  html += '<table class="contact-name-table"><tr><td class="contact-name-side-td"></td><td><p class="name-contact">' + name + '</p></td><td><p class="contact-name-notif"></p></td></tr></table></div></div>';
+  return html;
+}
 
 function loadLanguageProf(){
         var len = myLanguages.length;
@@ -1322,3 +1329,15 @@ function addZero(i) {
 function getTime(time){
   return addZero(time.getHours()) + ':' + addZero(time.getMinutes());
 }
+
+$$('.theme-choice').on('click', function(){
+  console.log(this);
+  if(!$$(this).hasClass("active")){
+    $$(this).toggleClass("active");
+    document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
+    document.documentElement.style.setProperty('--spiklbkDarkColour', '#ffffff');
+    document.documentElement.style.setProperty('--spiklbkLightColour', '#ffffff');
+    document.documentElement.style.setProperty('--spiklTextColour', '#2b2b2b');
+    document.documentElement.style.setProperty('--spiklAltTextColour', '#2b2b2b');
+  }
+})

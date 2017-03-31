@@ -6,6 +6,8 @@
     --spiklbkLightColour: #494746;
     --spiklAltTextColour: #c1c1c1;
     --spiklTextColour: white;
+    --spiklBorderColour: #494746;
+    --spiklIconColour: white;
 }
 
 .toolbar.tabbar.main-menu{
@@ -124,7 +126,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     color:  var(--spiklTextColour);
     height: 10px;
     border-top-style: solid;
-    border-color:  var(--spiklbkLightColour);
+    border-color:  var(--spiklBorderColour);
     border-bottom-style: solid;
     text-decoration: none;
     font-style: Quicksand;
@@ -132,6 +134,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 
 
 .tab-link.main-menu.middle{
+    color: var(--spiklIconColour);
     background-color:  var(--spiklMainColour);
     border-top-style: solid;
     border-color:  var(--spiklMainColour);
@@ -140,6 +143,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 }
 
 .tab-link.main-menu.middle.active{
+    color: var(--spiklIconColour);
     background-color:  var(--spiklMainColour);
     border-bottom-color:  var(--spiklMainColour);
 
@@ -150,7 +154,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     color:  var(--spiklTextColour);
     border-top-style: solid;
     border-top-color:  var(--spiklMainColour);
-    border-bottom-color:  var(--spiklbkDarkColour);
+    border-bottom-color:  var(--spiklBorderColour);
 }
 
 .toolbar.tabbar.main-menu{
@@ -165,17 +169,17 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 .content-block.welcome-message{
     font-size: 30px;
     text-align: center;
-    font-color:  var(--spiklbkLightColour);
+    color:  var(--spiklTextColour);
     margin-bottom: 0px;
     margin-top: 15px;
 }
 
 .content-block.header{
     text-align: center;
-    font-color:  var(--spiklbkLightColour);
+    color:  var(--spiklTextColour);
     margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .content-block.scroll-contacts{
@@ -188,8 +192,14 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     text-align: center;
     margin-bottom: 0px;
     margin-top: 0px;
+    height: 75px;
 }
 
+.name-contact{
+  font-size: 10px;
+  margin-bottom: 1px;
+  color: var(--spiklAltTextColour);
+}
 .content-block.notes-search{
     padding-top: none;
     padding-bottom: none;
@@ -220,6 +230,9 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     margin: 0 auto;
     height:50px;
     width:50px;
+    border: 1px solid;
+    border-style: solid;
+    border-color: var(--spiklBorderColour);
     border-radius: 50%;
     overflow: hidden;
     background-attachment: fixed;
@@ -236,6 +249,33 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     border-width: 2px;
     height: 60px;
     width: 60px;
+}
+
+.contact-name-table{
+  width: 100%;
+}
+
+.contact-name-side-td{
+  width:30%;
+}
+.contact-name-notif{
+  float: right;
+  background-color: #ff6600;
+  border-radius: 100%;
+  height : 12px;
+  width: 12px;
+  line-height: 13px;
+  font-size: 8px;
+  color: var(--spiklTextColour);
+  opacity: 0;
+}
+
+.contact-name-notif.active{
+  opacity: 100;
+}
+
+.contact-name-middle-td{
+
 }
 
 .content-block.notes-container{
@@ -281,7 +321,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 }
 
 .search-notes-icon{
-    color:  var(--spiklbkLightColour);
+    color:  var(--spiklTextColour);
 }
 
 .notes-sub-container{
@@ -290,6 +330,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     padding-left: 5%;
     padding-right: 5%;
     font-size: 20px;
+
 }
 .notes-sub-container.active{
     padding-top: 0px;
@@ -298,6 +339,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 .notes-sub-container-left{
     width: 49.5%;
     float: left;
+
 }
 
 .notes-sub-container-right{
@@ -310,12 +352,18 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 
 }
 
+::-webkit-input-placeholder{
+  color: var(--spiklAltTextColour);
+}
 
 .note{
     background-color:  var(--spiklbkLightColour);
     padding: 1% 5% 1% 5%;
     text-align: center;
     word-wrap: break-word;
+    border-style: solid;
+    border-color: var(--spiklBorderColour);
+    border-width: 1px;
 
 }
 
@@ -362,7 +410,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 }
 
 .chang-lang-button{
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     background-color:  var(--spiklMainColour);
     border-radius: 50%;
     font-size: 20px;
@@ -379,7 +427,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     position: absolute;
     left: 0;
     font-size: 20px;
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     text-align: center;
     line-height: 65px;
     border-radius: 100%;
@@ -391,7 +439,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     position: absolute;
     left: 0;
     font-size: 20px;
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     text-align: center;
     line-height: 40px;
 }
@@ -439,7 +487,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     background-color:  var(--spiklMainColour);
     border-style: none;
     border-radius: 5%;
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
@@ -450,7 +498,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     background-color:  var(--spiklMainColour);
     border-style: none;
     border-radius: 5%;
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
@@ -494,6 +542,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 }
 .profile-pic-container{
   margin-bottom: 0px;
+  margin-top: 10px;
 }
 
 .floating-pic-button{
@@ -510,10 +559,12 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 .floating-pic-button.chat{
   left: 70px;
   top: -65px;
+  color: var(--spiklIconColour);
 }
 .floating-pic-button.mail{
   left: 60px;
   top: -30px;
+  color: var(--spiklIconColour);
 }
 .content-block.profile-info-container{
     margin-top: 0px;
@@ -798,7 +849,7 @@ background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAKOCAYA
 }
 
 .search-item-text{
-    color: #c1c1c1;
+    color: var(--spiklAltTextColour);;
     font-size: 14px;
     margin-bottom: 0px;
 }
@@ -837,6 +888,7 @@ background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAKOCAYA
 .search-li{
         height: 105px;
         padding-top: 5px;
+        border-bottom: 1px solid var(--spiklBorderColour);
 }
 
 .search-li.active{
@@ -863,6 +915,10 @@ autocomplete-dropdown-search-page.language{
     display: none;
 }
 
+.popup-user{
+  height: 93%;
+  background-color: var(--spiklbkDarkColour);
+}
 .search-item-prof{
     margin-right: 10px;
     visibility: hidden;
@@ -878,7 +934,7 @@ autocomplete-dropdown-search-page.language{
     border-radius: 100%;
     font-size: 20px;
     background-color:  var(--spiklMainColour);
-    color:  var(--spiklTextColour);
+    color: var(--spiklIconColour);
     line-height: 30px;
 }
 
@@ -886,6 +942,7 @@ autocomplete-dropdown-search-page.language{
     background-color:  var(--spiklbkLightColour);
     height: 100px;
     text-align: center;
+    border-bottom: 1px solid var(--spiklBorderColour);
 }
 .chat-list-input{
     padding-left: 20px;
@@ -907,7 +964,7 @@ autocomplete-dropdown-search-page.language{
 
 .chat-item-outer-cell{
     padding-left:10px;
-    color: #c1c1c1;
+    color: var(--spiklTextColour);
     text-align: left;
     font-size: 14px;
 }
@@ -915,7 +972,7 @@ autocomplete-dropdown-search-page.language{
 .chat-item-inner-name-cell{
     width:150px;
     font-size: 16px;
-    color:white;
+    color: var(--spiklTextColour);
 }
 
 .chat-item-inner-time-cell{
@@ -929,8 +986,16 @@ autocomplete-dropdown-search-page.language{
     background-color:  var(--spiklbkDarkColour);
 }
 
+.message-received .message-text {
+  color:  var(--spiklTextColour);
+}
+
+.message-sent .message-text{
+  background-color:  var(--spiklMainColour);
+}
+
 .message-text{
-    background-color: #494746 !important;
+    background-color:  var(--spiklTextColour);
 }
 
 .login-screen-content{
@@ -987,13 +1052,15 @@ autocomplete-dropdown-search-page.language{
 }
 
 .login-input{
+
   text-align: center;
   width: 100px;
   background-color:  var(--spiklbkDarkColour);
 }
 
 input.login-input[type=text]{
- background-color:  #494746;
+ background-color:  var(--spiklbkDarkColour);
+ border-bottom: 1px solid var(--spiklBorderColour);
  color:  var(--spiklTextColour);
 
 }
@@ -1007,15 +1074,16 @@ input.login-input[type=text]{
 }
 .spikl-nav{
   background-color:  var(--spiklMainColour);
-  color:  var(--spiklTextColour);
+  color:  var(--spiklIconColour);
   margin-bottom: 0px !important;
   border : none
 }
 .backIcon{
-  color:  var(--spiklTextColour);
+  color:  var(--spiklIconColour);
 }
 input.login-input[type=password]{
- background-color:  #494746;
+ border-bottom: 1px solid var(--spiklBorderColour);
+ background-color:  var(--spiklbkDarkColour);
  color:  var(--spiklTextColour);
 }
 
@@ -1064,6 +1132,7 @@ input.login-input[type=password]{
   margin-bottom: 2px;
 }
 .signup-li{
+  border-bottom: 1px solid var(--spiklBorderColour);
   background-color:  var(--spiklbkLightColour);
   margin: 3px 0 3px 0;
 }
@@ -1332,17 +1401,52 @@ input:focus::-webkit-input-placeholder {
    100% {opacity: 0;}
 }
 
+.theme-choice{
+  width: 36px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: 0 0, 10px 0, 20px 0;
+  background-size: 10px 100%, 10px 100%, 10px 100%;
+  border-radius: 3px;
+  margin-left: 10px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.theme-choice.active{
+  border-color: var(--spiklMainColour);
+}
+
+.theme-choice.orange{
+  background-image:
+        linear-gradient(to top, #c1c1c1, #c1c1c1),
+        linear-gradient(to top, #ff6600, #ff6600),
+        linear-gradient(to top, #2B2C2B, #2B2C2B);
+}
+
+.theme-choice.shit{
+  background-image:
+        linear-gradient(to top, red, red),
+        linear-gradient(to top, blue, blue),
+        linear-gradient(to top, yellow, yellow);
+}
+
+
+
 @media only screen
   and (min-width: 375px)
   and (max-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .image-container{
-      height:100px!important;
-      width:100px!important;
+      height:60px!important;
+      width:60px!important;
     }
     .image-container.active{
-      height:110px!important;
-      width:110px!important;
+      height:70px!important;
+      width:70px!important;
+    }
+    .contact-container{
+      height: 85px !important;
     }
     .profile-pic{
         height: 250px!important;
@@ -1381,7 +1485,15 @@ input:focus::-webkit-input-placeholder {
         width: 300px!important;
       }
 }
-
+.c100{
+  background-color: var(--spiklAltTextColour) !important;
+}
+.c100 > span{
+  color:  var(--spiklAltTextColour) !important;
+}
+.c100::after{
+  background-color: var(--spiklbkDarkColour) !important;
+}
 .c100.orange .bar, .c100.orange .fill {
     border-color: var(--spiklMainColour) !important;
 }
