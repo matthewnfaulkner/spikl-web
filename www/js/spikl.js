@@ -10,8 +10,9 @@ var $$ = Dom7;
 $$("#addLangModal").on('click', function(event){
   if(event.target == $$('#addLangModal')[0]){
     $$('.modal-overlay.modal-overlay-visible')[0].className = 'modal-overlay modal-overlay-invisible';
-    //$$('.add-new-lang-cont-visible')[0].className = 'add-new-lang-cont-invisible';
-    $$('.add-note-input-cont-visible')[0].className = 'add-note-input-cont-invisible';
+    $$('.add-new-lang-cont').addClass("invisible");
+    $$('.add-note-input-cont').addClass("invisible");
+    $$('.change-lang-cont').addClass("invisible");
   }
 })
 var name = "Nickssy1";
@@ -335,13 +336,13 @@ $$('.increase-lang-prof').on('click', function () {
   $$('.submit-lang-update').on('click', function () {
 
       $$('.modal-overlay.modal-overlay-visible')[0].className = 'modal-overlay modal-overlay-invisible';
-      $$('.change-lang-cont-visible')[0].className = 'change-lang-cont-invisible';
+      $$('.change-lang-cont').addClass('invisible');
       updateLanguageProf();
   });
 
   $$('.submit-new-lang').on('click', function () {
       $$('.modal-overlay.modal-overlay-visible')[0].className = 'modal-overlay modal-overlay-invisible';
-      $$('.add-new-lang-cont-visible')[0].className = 'add-new-lang-cont-invisible';
+      $$('.add-new-lang-cont')[0].addClass('invisible');
       var language = $$('#autocomplete-dropdown')[0].value;
       var id = "lang-ring" + profilePageSwiper.clickedIndex;
       profilePageSwiper.clickedSlide.innerHTML = ('<div class="assigned c100 p0 orange lang-ring" id="' + id + '"> <span>' + language + '</span><div class="slice"><div class="bar"></div><div class="fill"></div></div></div>')
@@ -392,13 +393,13 @@ $$('#profile').on('show', function () {
         var activeLang = document.getElementById(id);
         $$('.modal-overlay.modal-overlay-invisible')[0].className = 'modal-overlay modal-overlay-visible';
         if($$('#' + id).hasClass("assigned")){
-            $$('.change-lang-cont-invisible')[0].className = 'change-lang-cont-visible';
+            $$('.change-lang-cont.invisible').toggleClass('invisible');
             var progress = document.getElementById("change-lang-prof");
             progress.childNodes[1].innerHTML = myLanguages[profilePageSwiper.clickedIndex].name;
             progress.className = "c100 p0 big orange p" + 10 * myLanguages[profilePageSwiper.clickedIndex].prof;
         }
         else if($$('#' + id).hasClass("vacant")){
-            $$('.add-new-lang-cont-invisible')[0].className = 'add-new-lang-cont-visible';
+            $$('.add-new-lang-cont').toggleClass('invisible');
         }
 
     });
@@ -707,6 +708,10 @@ var myMessages = "";
 var messageList = [];
 var notes = [];
 notes[""] = [];
+notes["nadc500@york.ac.uk"] = []
+for(var i =0; i< 1000; i++){
+  notes["nadc500@york.ac.uk"].push({'name' : 'nicky', 'title': "", "body": "hello" + i, "date": ""});
+}
 
 $$('#messenger').on('show', function () {
     $$('#chat-page-list')[0].innerHTML = "";
@@ -1037,27 +1042,53 @@ mainPageSwiper.on('Tap', function(){
     if(prevActiveContact != activeContact){
       $$(activeContact).toggleClass("active");
       activeSpikler = mainPageSwiper.slides[mainPageSwiper.clickedIndex].id;
-      organiseNotes(activeSpikler);
-
+      $$('#notes-left')[0].innerHTML = "";
+      $$('#notes-right')[0].innerHTML = "";
+      organiseNotes(activeSpikler, 0);
+      currentNotes = 0;
+      $$('#notes-left').toggleClass("show");
+      $$('#notes-right').toggleClass("show");
     }
     else{
       activeSpikler = "";
-      organiseNotes(activeSpikler);
+      currentNotes = 0;
+      $$('#notes-left')[0].innerHTML = "";
+      $$('#notes-right')[0].innerHTML = "";
+      organiseNotes(activeSpikler, 0);
     }
     activeIndex = mainPageSwiper.clickedIndex;
 });
 
-function organiseNotes(email){
-  var leftBlock = $$('#notes-left');
-  var rightBlock = $$('#notes-right');
-  leftBlock[0].innerHTML = "";
-  rightBlock[0].innerHTML = "";
-  console.log(notes);
-  for(var note in notes[email]){
-    console.log(notes[email][note]);
+function organiseNotes(email, startIndex){
+  leftNotesHeight = 0;
+  for(var note = startIndex; note < notes[email].length; note++){
+    if(note > startIndex + 21){
+      break;
+    }
     makeNewNote(notes[email][note].title, notes[email][note].name, notes[email][note].body,  notes[email][note].time);
   }
 }
+
+var currentNotes = 0;
+$$('.infinite-scroll').on('infinite', function () {
+  var maxItems = notes[activeSpikler].length;
+  currentNotes += 21;
+  organiseNotes(activeSpikler, currentNotes);
+});
+
+$$('#notes-block').on('touchstart', '.note', function(){
+  var note = this;
+  var interval = setInterval(function(){
+    console.log("Hello");
+    clearInterval(interval);
+    var clickedLink = note;
+    myApp.popover('.popover-notes', clickedLink);
+    //note.parentNode.parentNode.removeChild(note.parentNode);
+  }, 1000);
+  $$(this).on('touchend', function(){
+    clearInterval(interval);
+  })
+});
 
 mainPageSwiper.on('DoubleTap', function(){
     if (activeIndex >= 0){
@@ -1156,7 +1187,7 @@ function closeNotes() {
 
 $$('.add-text-note').on('click', function () {
     $$('.modal-overlay.modal-overlay-invisible')[0].className = 'modal-overlay modal-overlay-visible';
-    $$('.add-note-input-cont-invisible')[0].className = 'add-note-input-cont-visible';
+    $$('.add-note-input-cont').toggleClass('invisible');
     if(activeSpikler != ""){
       $$('.add-note-input.spikler')[0].value = friends[activeSpikler].name;
     }
@@ -1179,6 +1210,8 @@ $$('#search-bar').on('mousedown', function() {
 
 var alternate = true;
 var note_id = 0;
+var leftNotesHeight = 0;
+var rightNotesHeight = 0;
 
 $$('.submit-note').on('click', function () {
     var spikler = $$('.add-note-input.spikler')[0].value;
@@ -1221,10 +1254,10 @@ $$('.submit-note').on('click', function () {
     $$('.add-note-input.body')[0].value = "";
     var date = new Date();
     var newNote = {"name" : spikler, "title" : title, "body" : body, "time" : date};
-    notes[activeSpikler].push(newNote);
+    notes[activeSpikler].unshift(newNote);
     console.log(notes);
     $$('.modal-overlay.modal-overlay-visible')[0].className = "modal-overlay modal-overlay-invisible";
-    $$('.add-note-input-cont-visible')[0].className = 'add-note-input-cont-invisible';
+    $$('.add-note-input-cont').toggleClass('invisible');
 });
 
 
@@ -1243,7 +1276,7 @@ function makeNewNote(title, spikler, body, time){
    note.className = "note";
    note.id = note.className + note_id;
    note_id++;
-   container.prepend(note_cont);
+   container.append(note_cont);
    var dom_note_container = $$('#'+ note_cont.id);
    dom_note_container.prepend(note);
    var note_title = document.createElement("DIV");
@@ -1255,8 +1288,10 @@ function makeNewNote(title, spikler, body, time){
    var dom_note = $$('#'+ note.id);
    dom_note.append(note_title);
    dom_note.append(note_spikler);
-   console.log(body);
    dom_note.append(body);
+   leftNotesHeight += note_cont.offsetHeight;
+   document.documentElement.style.setProperty('--notesHeight', '-' + leftNotesHeight + 'px');
+
 }
 
 function testSave(){
@@ -1288,7 +1323,7 @@ function loadFriends(){
   }
   for(var friend in friends){
     mainPageSwiper.appendSlide(buildFriend(friends[friend].name, friends[friend].pic, friend));
-    notes[friend] = [];
+    //notes[friend] = [];
   }
 }
 

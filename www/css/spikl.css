@@ -8,6 +8,7 @@
     --spiklTextColour: white;
     --spiklBorderColour: #494746;
     --spiklIconColour: white;
+    --notesHeight: 0px;
 }
 
 .toolbar.tabbar.main-menu{
@@ -339,20 +340,34 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     padding-top: 0px;
 
 }
+
 .notes-sub-container-left{
     width: 49.5%;
     float: left;
+    position: relative;
+}
 
+.notes-sub-container-left.show{
+  -webkit-animation: noteDrop 1s linear 1 forwards;
+}
+
+@-webkit-keyframes noteDrop {
+  0% {top: var(--notesHeight)}
+  100% {top: 0;}
 }
 
 .notes-sub-container-right{
     width: 49.5%;
     float:right;
+    position: relative;
+}
+
+.notes-sub-container-right.show{
+  -webkit-animation: noteDrop 1s linear 1 forwards;
 }
 
 .indie-note-container{
     padding-bottom: 2px;
-
 }
 
 ::-webkit-input-placeholder{
@@ -367,7 +382,6 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     border-style: solid;
     border-color: var(--spiklBorderColour);
     border-width: 1px;
-
 }
 
 
@@ -454,10 +468,10 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     margin-bottom: 15px;
 }
 
-.add-note-input-cont-invisible{
+.add-note-input-cont.invisible{
     display: none;
 }
-.add-note-input-cont-visible{
+.add-note-input-cont{
     display: normal;
     width: 90%;
     height: 50%;
@@ -498,6 +512,18 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
     padding-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
+}
+
+.popover-angle:after{
+  background: var(--spiklbkLightColour);
+}
+
+.popover{
+  background-color: var(--spiklbkLightColour) !important;
+}
+.popover-inner{
+  background-color: var(--spiklbkLightColour);
+  border-color: var(--spiklBorderColour);
 }
 
 .submit-lang-update{
@@ -702,15 +728,20 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 }
 
 
-.change-lang-cont-invisible{
+.change-lang-cont.invisible{
     display: none;
 }
 
-.add-new-lang-cont-invisible{
+.add-new-lang-cont{
+  display: block;
+}
+
+.add-new-lang-cont.invisible{
     display: none;
 }
 
-.change-lang-cont-visible{
+
+.change-lang-cont{
     display: normal;
 }
 
@@ -733,7 +764,7 @@ src: url("../fonts/Dosis-regular.ttf") format("truetype");
 
 }
 
-.change-lang-cont-visible{
+.change-lang-cont{
     display: normal;
     width: 90%;
     height: 40%;
