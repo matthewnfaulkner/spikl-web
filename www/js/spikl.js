@@ -10,7 +10,8 @@ var $$ = Dom7;
 $$("#addLangModal").on('click', function(event){
   if(event.target == $$('#addLangModal')[0]){
     $$('.modal-overlay.modal-overlay-visible')[0].className = 'modal-overlay modal-overlay-invisible';
-    $$('.add-new-lang-cont-visible')[0].className = 'add-new-lang-cont-invisible';
+    //$$('.add-new-lang-cont-visible')[0].className = 'add-new-lang-cont-invisible';
+    $$('.add-note-input-cont-visible')[0].className = 'add-note-input-cont-invisible';
   }
 })
 var name = "Nickssy1";
@@ -32,11 +33,7 @@ function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(york.ac.uk)$/;
   return re.test(email);
 }
-document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
-document.documentElement.style.setProperty('--spiklbkDarkColour', '#ffffff');
-document.documentElement.style.setProperty('--spiklbkLightColour', '#ffffff');
-document.documentElement.style.setProperty('--spiklTextColour', '#2b2b2b');
-document.documentElement.style.setProperty('--spiklAltTextColour', '#2b2b2b');
+
 login("mf840@york.ac.uk", "Password1");
 function login(email, pword){
   var nonce ="";
@@ -371,7 +368,7 @@ $$('.increase-lang-prof').on('click', function () {
   var currentPopupUserEmail = "";
 
 $$('#home').on('show', function () {
-  loadFriends();
+  console.log("hjhj");
 });
 
 $$('#profile').on('show', function () {
@@ -708,6 +705,8 @@ $$('#floating-button-chat').on('click', function(){
 
 var myMessages = "";
 var messageList = [];
+var notes = [];
+notes[""] = [];
 
 $$('#messenger').on('show', function () {
     $$('#chat-page-list')[0].innerHTML = "";
@@ -972,7 +971,6 @@ $$('.messagebar .link').on('click', function () {
   var date = new Date();
   var newChat = {"body" : messageText, "date" :  date.getTime(), "type" : 'sent'};
   myConversations[activeUserEmail]["chat"].unshift(newChat);
-  console.log(data);
   $$.ajax({
       type: "POST",
       url: 'http://www.spikl.co.uk/chat.php',
@@ -1023,6 +1021,7 @@ $$('#chat-page-list').on("click", "li", function(){
 
 
 var activeIndex = 4;
+var activeSpikler = "";
 
 mainPageSwiper.on('Tap', function(){
   //document.documentElement.style.setProperty('--spiklMainColour', 'red');
@@ -1037,9 +1036,28 @@ mainPageSwiper.on('Tap', function(){
     var activeContact =mainPageSwiper.slides[mainPageSwiper.clickedIndex].getElementsByClassName("image-container")[0];
     if(prevActiveContact != activeContact){
       $$(activeContact).toggleClass("active");
+      activeSpikler = mainPageSwiper.slides[mainPageSwiper.clickedIndex].id;
+      organiseNotes(activeSpikler);
+
+    }
+    else{
+      activeSpikler = "";
+      organiseNotes(activeSpikler);
     }
     activeIndex = mainPageSwiper.clickedIndex;
 });
+
+function organiseNotes(email){
+  var leftBlock = $$('#notes-left');
+  var rightBlock = $$('#notes-right');
+  leftBlock[0].innerHTML = "";
+  rightBlock[0].innerHTML = "";
+  console.log(notes);
+  for(var note in notes[email]){
+    console.log(notes[email][note]);
+    makeNewNote(notes[email][note].title, notes[email][note].name, notes[email][note].body,  notes[email][note].time);
+  }
+}
 
 mainPageSwiper.on('DoubleTap', function(){
     if (activeIndex >= 0){
@@ -1139,6 +1157,12 @@ function closeNotes() {
 $$('.add-text-note').on('click', function () {
     $$('.modal-overlay.modal-overlay-invisible')[0].className = 'modal-overlay modal-overlay-visible';
     $$('.add-note-input-cont-invisible')[0].className = 'add-note-input-cont-visible';
+    if(activeSpikler != ""){
+      $$('.add-note-input.spikler')[0].value = friends[activeSpikler].name;
+    }
+    else{
+      $$('.add-note-input.spikler')[0].value = "";
+    }
 
 });
 
@@ -1166,14 +1190,12 @@ $$('.submit-note').on('click', function () {
     }
     //var date = new Date();
     var time = 5;
-    if (alternate){
-        var container = $$('.notes-sub-container-left');
-        alternate = false;
-        }
+    if($$('.notes-sub-container-left')[0].offsetHeight <= $$('.notes-sub-container-right')[0].offsetHeight){
+      var container = $$('.notes-sub-container-left');
+    }
     else{
-        var container = $$('.notes-sub-container-right');
-        alternate = true;
-        }
+      var container = $$('.notes-sub-container-right');
+    }
     var note_cont = document.createElement("DIV");
     note_cont.className = "indie-note-container"
     note_cont.id = note_cont.className + note_id;
@@ -1197,25 +1219,44 @@ $$('.submit-note').on('click', function () {
     $$('.add-note-input.title')[0].value = "";
     $$('.add-note-input.spikler')[0].value = "";
     $$('.add-note-input.body')[0].value = "";
+    var date = new Date();
+    var newNote = {"name" : spikler, "title" : title, "body" : body, "time" : date};
+    notes[activeSpikler].push(newNote);
+    console.log(notes);
     $$('.modal-overlay.modal-overlay-visible')[0].className = "modal-overlay modal-overlay-invisible";
     $$('.add-note-input-cont-visible')[0].className = 'add-note-input-cont-invisible';
-
 });
+
 
 function makeNewNote(title, spikler, body, time){
    // note.setAttribute('data-time', time);
-    var note_title = document.createElement("DIV");
-    note_title.className = "note-title";
-    note_title.innerHTML = title;
-    var note_spikler = document.createElement("DIV");
-    note_spikler.className = "note-spikler";
-    note_spikler.innerHTML = spikler;
-    note.innerHTML = body;
-    var dom_note_cont = $$('.indie-note-container');
-    dom_note_cont.append(note);
-    dom_note_cont.append(note_spikler);
-    dom_note_cont.innerHTML = body;
-    return note_cont;
+   if($$('.notes-sub-container-left')[0].offsetHeight <= $$('.notes-sub-container-right')[0].offsetHeight){
+     var container = $$('.notes-sub-container-left');
+   }
+   else{
+     var container = $$('.notes-sub-container-right');
+   }
+   var note_cont = document.createElement("DIV");
+   note_cont.className = "indie-note-container"
+   note_cont.id = note_cont.className + note_id;
+   var note = document.createElement("DIV");
+   note.className = "note";
+   note.id = note.className + note_id;
+   note_id++;
+   container.prepend(note_cont);
+   var dom_note_container = $$('#'+ note_cont.id);
+   dom_note_container.prepend(note);
+   var note_title = document.createElement("DIV");
+   note_title.className = "note-title";
+   note_title.innerHTML = title;
+   var note_spikler = document.createElement("DIV");
+   note_spikler.className = "note-spikler";
+   note_spikler.innerHTML = spikler;
+   var dom_note = $$('#'+ note.id);
+   dom_note.append(note_title);
+   dom_note.append(note_spikler);
+   console.log(body);
+   dom_note.append(body);
 }
 
 function testSave(){
@@ -1246,12 +1287,13 @@ function loadFriends(){
     $$('.main-page-swiper')[0].innerHTML = "No Spiklers";
   }
   for(var friend in friends){
-    mainPageSwiper.appendSlide(buildContact(friends[friend].name, friends[friend].pic));
+    mainPageSwiper.appendSlide(buildFriend(friends[friend].name, friends[friend].pic, friend));
+    notes[friend] = [];
   }
 }
 
-function buildContact(name, pic){
-  var html ='<div class="swiper-slide main-page-contact"><div class="contact-container"><img class="image-container" src="' + pic + '">';
+function buildFriend(name, pic, email){
+  var html ='<div class="swiper-slide main-page-contact" id="' + email + '"><div class="contact-container"><img class="image-container" src="' + pic + '">';
   html += '<table class="contact-name-table"><tr><td class="contact-name-side-td"></td><td><p class="name-contact">' + name + '</p></td><td><p class="contact-name-notif"></p></td></tr></table></div></div>';
   return html;
 }
@@ -1331,13 +1373,30 @@ function getTime(time){
 }
 
 $$('.theme-choice').on('click', function(){
-  console.log(this);
+  console.log(this.parentNode);
+  var parent = this.parentNode;
+  var active = $$(parent)[0].getElementsByClassName('active')[0];
+  $$(active).removeClass("active");
   if(!$$(this).hasClass("active")){
     $$(this).toggleClass("active");
-    document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
-    document.documentElement.style.setProperty('--spiklbkDarkColour', '#ffffff');
-    document.documentElement.style.setProperty('--spiklbkLightColour', '#ffffff');
-    document.documentElement.style.setProperty('--spiklTextColour', '#2b2b2b');
-    document.documentElement.style.setProperty('--spiklAltTextColour', '#2b2b2b');
+    if($$(this).hasClass("light")){
+      document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
+      document.documentElement.style.setProperty('--spiklbkDarkColour', '#ffffff');
+      document.documentElement.style.setProperty('--spiklbkLightColour', '#ffffff');
+      document.documentElement.style.setProperty('--spiklTextColour', '#2b2b2b');
+      document.documentElement.style.setProperty('--spiklAltTextColour', '#2b2b2b');
+      document.documentElement.style.setProperty('--spiklBorderColour', '#2b2b2b');
+
+    }
+    else if($$(this).hasClass("dark")){
+      document.documentElement.style.setProperty('--spiklMainColour', '#ff6600');
+      document.documentElement.style.setProperty('--spiklbkDarkColour', '#2B2C2B');
+      document.documentElement.style.setProperty('--spiklbkLightColour', '#494746');
+      document.documentElement.style.setProperty('--spiklTextColour', 'white');
+      document.documentElement.style.setProperty('--spiklAltTextColour', '#c1c1c1');
+      document.documentElement.style.setProperty('--spiklBorderColour', '#494746');
+    }
   }
 })
+
+loadFriends();
