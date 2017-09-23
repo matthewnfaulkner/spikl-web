@@ -5,7 +5,7 @@ var myApp = new Framework7({
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
-//myApp.loginScreen();
+myApp.loginScreen();
 
 $$("#addLangModal").on('click', function(event){
   if(event.target == $$('#addLangModal')[0]){
@@ -35,7 +35,7 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-login("mf840@york.ac.uk", "Password1");
+//login("mf840@york.ac.uk", "Password1");
 function login(email, pword){
   var nonce ="";
   var salt;
@@ -779,7 +779,7 @@ function receiveNewConversation(email, messageText, messageType, messageDate){
   });
 
 }
-setInterval(checkPendingMessages, 3000);
+//setInterval(checkPendingMessages, 3000);
 var myMessagebar = "";
 var activeUserEmail = "";
 
