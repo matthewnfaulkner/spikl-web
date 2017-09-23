@@ -1,0 +1,34 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        },
+        "cordova-plugin-ionic-keyboard": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "matt.SpiKl"
+        }
+    }
+}

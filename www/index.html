@@ -3,9 +3,7 @@
   <head>
     <!-- Required meta tags-->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <!-- Your app title -->
     <title>My App</title>
     <!-- Path to Framework7 iOS CSS theme styles-->
@@ -18,6 +16,7 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/circle.css">
       <link rel="stylesheet" href="css/framework7-icons.css">
+      <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
   </head>
   <body>
@@ -32,7 +31,7 @@
       <!-- Default view-page layout -->
 
       <div class="view">
-        <div class="popup popup-signup" id="signup-popup">
+        <div class="popup popup-signup background-color-dark-1" id="signup-popup">
               <div class="navbar spikl-nav">
                 <div class="navbar-inner">
                     <div class="left">
@@ -51,14 +50,14 @@
               <ul style="background-color: transparent; border-top-style">
                 <!-- Text inputs -->
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner" style="border-box: 0">
                       <div class="item-title label">York Email</div>
                       <div class="item-input">
                         <table>
                           <tr>
                             <td>
-                              <input class="signup-input" type="text" placeholder="*York Email" id="signup-email" name="email">
+                              <input class="signup-input text-color-alt-1" type="text" placeholder="*York Email" id="signup-email" name="email">
                             </td>
                             <td>
                               <div class ="load-cont">
@@ -67,7 +66,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div id="email-rulez"class="rulez">
+                              <div id="email-rulez"class="rulez background-color-light-1">
                                 <div class="check-cont">
                                   <i id="email-check-cross" class="f7-icons check-cross"></i>
                                 </div>
@@ -82,7 +81,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Password</div>
                       <div class="item-input">
@@ -113,7 +112,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Re-enter</div>
                       <div class="item-input">
@@ -144,7 +143,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">First Name</div>
                       <div class="item-input">
@@ -154,7 +153,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Last Name</div>
                       <div class="item-input">
@@ -165,7 +164,7 @@
                 </li>
                 <!-- Date -->
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Birth date</div>
                       <div class="item-input">
@@ -176,7 +175,7 @@
                 </li>
                 <!-- Date time-->
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Gender</div>
                       <div  class="item-input">
@@ -190,7 +189,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Studying</div>
                       <div class="item-input">
@@ -201,7 +200,7 @@
                 </li>
                 <!-- Slider (Range input) -->
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Nationality</div>
                       <div class="item-input">
@@ -405,7 +404,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="item-content signup-li">
+                  <div class="item-content signup-li background-color-light-1 border-color-light-1">
                     <div class="item-inner">
                       <div class="item-title label">Picture</div>
                       <div class="item-input">
@@ -423,21 +422,21 @@
               </ul>
               </div>
             </form>
-            <div class="signup-form-error-cont">
-              <p class="signup-form-error">Please make sure all required fields are checked.</p>
+            <div class="signup-form-error-cont background-color-light-1">
+              <p class="signup-form-error text-color-alt-1">Please make sure all required fields are checked.</p>
             </div>
-            <div class="signup-button-cont">
+            <div class="signup-button-cont background-color-light-1">
               <button class="button signup-button">SIGN UP</button>
             </div>
-            <div class="signup-form-error-cont">
-              <p class="signup-form-error">Please make sure all required fields are checked.</p>
+            <div class="signup-form-error-cont background-color-light-1">
+              <p class="signup-form-error text-color-alt-1">Please make sure all required fields are checked.</p>
             </div>
         </div>
         <div class="page">
           <!-- page-content has additional login-screen content -->
 
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">
+          <div class="page-content login-screen-content background-color-dark-1">
+            <div class="login-screen-title text-color-main-1">
                             get cultured. go global.
             </div>
             <!-- Login form -->
@@ -447,22 +446,22 @@
                   <li class="item-content" style="padding: 0px;">
                     <div class="login-inner">
                       <div class="item-input">
-                        <input class="login-input" type="text" id="login-username" name="username" placeholder="Username">
+                        <input class="login-input background-color-dark-1 border-color-light-1  text-color-alt-1" type="text" id="login-username" name="username" placeholder="Username">
                       </div>
                     </div>
                   </li>
                   <li class="item-content" style="padding: 0px;">
                     <div class="login-inner">
                       <div class="item-input">
-                        <input class="login-input" type="password" id="login-password" name="password" placeholder="Password">
+                        <input class="login-input background-color-dark-1 border-color-light-1 text-color-alt-1" type="password" id="login-password" name="password" placeholder="Password">
                       </div>
                     </div>
                   </li>
                   <li>
-                    <div class="signin-error">
+                    <div class="signin-error text-color-alt-1">
                     </div>
                     <div class="login-inner">
-                      <a href='#' class="forgotten">forgotten password?</a>
+                      <a href='#' class="forgotten text-color-alt-1">forgotten password?</a>
                   </div>
                   </li>
                 </ul>
@@ -476,7 +475,7 @@
                   </li>
                   <li>
                     <div class="login-inner" style="padding-top: 5px;">
-                      <a href='#' class="signup">New to SPIKL?</a>
+                      <a href='#' class="signup text-color-alt-1">New to SPIKL?</a>
                   </div>
                   </li>
                 </ul>
@@ -495,38 +494,98 @@
 
         <!-- Top Navbar-->
         <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div data-page="home" class="page toolbar- ">
+        <div data-page="home" class="page toolbar-fixed">
           <!-- Page, "data-page" contains page name -->
-            <div class="toolbar tabbar main-menu">
-                <div class="toolbar-inner">
-                    <a href="#search" class="tab-link main-menu" id="search-tab">
+            <div class="toolbar tabbar main-menu background-color-light-1" id="spikl-tabbar">
+                <div class="toolbar-inner background-color-light-1">
+                    <a href="#search" class="text-color-main-1 tab-link main-menu background-color-light-1 border-color-light-1" id="search-tab">
                         <i class="f7-icons">search</i>
                     </a>
-                    <a href="#profile" class="tab-link main-menu" id="profile-tab">
+                    <a href="#profile" class="tab-link main-menu background-color-light-1 border-color-light-1 text-color-main-1" id="profile-tab">
                         <i class="f7-icons">person</i>
                     </a>
 
-                    <a href="#home" class="tab-link main-menu middle spikl-orange" id="main-tab">SPIKL</a>
-                    <a href="#messenger" class="tab-link main-menu" id="messenger-tab">
+                    <a href="#home" class="tab-link main-menu middle icon-color" id="main-tab">SPIKL</a>
+                    <a href="#messenger" class="tab-link main-menu background-color-light-1 border-color-light-1 text-color-main-1" id="messenger-tab">
                         <i class="f7-icons">chat_fill</i>
                     </a>
-                    <a href="#settings" class="tab-link main-menu" id="settings-tab">
+                    <a href="#settings" class="tab-link main-menu background-color-light-1 border-color-light-1 text-color-main-1" id="settings-tab">
                         <i class="f7-icons">gear_fill</i>
                     </a>
 
                 </div>
             </div>
-          <div data-page="index" class="page mainpage">
+          <div data-page="index" class="page mainpage background-color-dark-1">
                <div class="page-content spikl-page">
             <!-- Scrollable page content -->
                 <div class="tabs" style="height: 90%">
                         <div class="tab active" id="home" style="height: 100%">
                             <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
-                                 <div class="content-block welcome-message">
+                              <div class="popup popup-addnote background-color-dark-1" id="addnote-popup">
+                                    <div class="navbar spikl-nav">
+                                      <div class="navbar-inner">
+                                          <div class="left">
+                                              <a href="#" class="back-signin close-popup">
+                                                <i class="f7-icons backIcon">chevron_left</i>
+                                              </a>
+                                          </div>
+                                          <div class="center">add note</div>
+                                          <div class="right">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="addnote-cont">
+                                    <table id="addnote-table">
+                                      <tr>
+                                        <td>
+                                          <input class="autocomplete-dropdown-search-page add-note-input spikler background-color-light-1 border-color-light-1 text-color-main-1" placeholder="tag to spikler" name="spikler" id="autocomplete-dropdown-spikler">
+                                          <input class="add-note-input title background-color-light-1 border-color-light-1 text-color-main-1" placeholder="add title" name="title">
+                                        </td>
+                                        <td>
+                                          <button class="button submit-note">Save Note</button>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <textarea id="add-note-text-area" class="add-note-input body background-color-light-1 border-color-light-1 text-color-main-1" placeholder="add note"></textarea>
+                                    <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+
+                    </script>
+                                </div>
+                              </div>
+                              <div class="navbar spikl-nav notes-selection" id="notes-selection">
+                                <div class="navbar-inner">
+                                    <div class="left">
+                                      Selection:
+                                      <span id="selection-count">
+                                        1
+                                      </span>
+                                    </div>
+                                    <div class="center">
+                                      <a href="#" class="navbar-notes-icon" id="notes-selection-delete">
+                                          Delete
+                                      </a>
+                                      <a href="#" class="navbar-notes-icon">
+                                          Share
+                                      </a>
+                                      <a href="#" class="navbar-notes-icon">
+                                          Merge
+                                      </a>
+                                    </div>
+                                    <div class="right">
+                                      <a href="#" class="navbar-notes-icon" id="notes-selection-close">
+                                          <i class="f7-icons">close</i>
+                                      </a>
+                                    </div>
+                                </div>
+                              </div>
+                                 <div class="content-block welcome-message text-color-alt-1">
                                     <p style="margin-bottom:2px;"><span class="greeting-word">Hello, </span><span class="greeting-name">Kitten!</span></p>
                                  </div>
                                 <div class="content-block scroll-contacts">
-                                    <div class="content-block header">
+                                    <div class="content-block header text-color-alt-1">
                                         <p>Your Spiklers</p>
                                     </div>
                                     <div class="full-swiper-container">
@@ -538,10 +597,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="content-block notes-container" id="notes-cont" style="margin-bottom: 0px; margin-top: 0px">
+                                <div class="content-block notes-container background-color-dark-1" id="notes-cont" style="margin-bottom: 0px; margin-top: 0px">
                                         <div class="search-notes-cont" id="search-bar">
-                                            <input class="inputs-notes" type="text" placeholder="NOTES" >
-                                            <a href="#" class="search-notes-icon">
+                                            <input class="inputs-notes background-color-dark-1 text-color-main-1" type="text" placeholder="NOTES" id="search-notes" >
+                                            <a href="#" class="search-notes-icon text-color-alt-1">
                                                 <i class="f7-icons">search</i>
                                             </a>
                                         </div>
@@ -573,12 +632,13 @@
                                             </table>
                                         </div>
 
-                                        <div class="page-content notes-sub-container infinite-scroll" id="notes-block">
+                                        <div class="page-content notes-sub-container infinite-scroll border-color-dark-1 background-color-dark-1" id="notes-block">
                                             <div class="left notes-sub-container-left" id="notes-left">
                                             </div>
                                             <div class="right notes-sub-container-right" id="notes-right">
                                             </div>
                                         </div>
+
                                 </div>
                             </div>
                         </div>
@@ -594,10 +654,10 @@
                                      </a>
                                  </div>
                                 <div class="content-block profile-info-container">
-                                    <div class="profile-data profile-name">
+                                    <div class="profile-data profile-name text-color-alt-1">
                                         Kitten
                                     </div>
-                                    <div class="profile-data profile-uni">
+                                    <div class="profile-data profile-uni text-color-alt-1">
                                         University of Kittens
                                     </div>
 
@@ -611,42 +671,15 @@
 
                                                     <div class="swiper-container profile-page-swiper lang-swiper">
                                                         <div class="swiper-wrapper">
-                                                            <div class="swiper-slide" style="">
-                                                                <div class="vacant c100 p0 orange lang-ring" id="lang-ring0">
+                                                            <!--<div class="swiper-slide" style="">
+                                                                <div class="vacant c100 p0 orange lang-ring text-color-alt-1" id="lang-ring0">
                                                                     <span>ENG</span>
                                                                     <div class="slice">
                                                                         <div class="bar"></div>
                                                                         <div class="fill"></div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="swiper-slide" style="">
-                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring1">
-                                                                    <span>+</span>
-                                                                    <div class="slice">
-                                                                        <div class="bar"></div>
-                                                                        <div class="fill"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide" style="">
-                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring2">
-                                                                    <span>+</span>
-                                                                    <div class="slice">
-                                                                        <div class="bar"></div>
-                                                                        <div class="fill"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide" style="">
-                                                                <div class="vacant c100 p0 small orange lang-ring" id="lang-ring3">
-                                                                    <span>+</span>
-                                                                    <div class="slice">
-                                                                        <div class="bar"></div>
-                                                                        <div class="fill"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            </div>!-->
                                                             </div>
 
                                                         </div>
@@ -662,7 +695,7 @@
                                             </div>
                                             <div class="content-block" style="margin-top: 10px;">
                                                     <div class="profile-message-cont">
-                                                        <p class="profile-message">Add a profile description.</p>
+                                                        <p class="profile-message text-color-alt-1">Add a profile description.</p>
                                                     </div>
                                             </div>
 
@@ -675,13 +708,13 @@
                                       <table style="width: 100%;">
                                           <tr>
                                               <td style="text-align: center; padding-right: 3px;">
-                                                  <a href="#" id="search-bar-language" class="button search-bar-button active">LANGUAGE</a>
+                                                  <a href="#" id="search-bar-language" class="button search-bar-button background-color-light-1 text-color-main-1 border-color-dark-1 active">LANGUAGE</a>
                                               </td>
                                               <td style="text-align: center; padding-right: 3px;">
-                                                  <a href="#"  id="search-bar-location" class="button search-bar-button">LOCATION</a>
+                                                  <a href="#"  id="search-bar-location" class="button search-bar-button  background-color-light-1 text-color-main-1 border-color-dark-1">LOCATION</a>
                                               </td>
                                               <td style="text-align: center; padding-right: 3px;">
-                                                  <div class="button search-bar-button">
+                                                  <div class="button search-bar-button background-color-light-1 text-color-main-1 border-color-dark-1">
                                                     <input id="search-bar-input" href="#" type="text" class="" style="width: 100%; background-color: transparent; border-style: none" placeholder="search">
                                                   </div>
                                               </td>
@@ -691,7 +724,7 @@
                                             <ul style="background-color: transparent">
                                                 <li class="item-content search-lang">
                                                     <div class="item-input">
-                                                        <input class="autocomplete-dropdown-search-page language" type="text" placeholder="Language" id="autocomplete-dropdown-search-page" value="">
+                                                        <input class="autocomplete-dropdown-search-page language text-color-alt-1" type="text" placeholder="Language" id="autocomplete-dropdown-search-page" value="">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -709,11 +742,11 @@
                                           </div>
                                   </div>
                                     </div>
-                             <div class="popup popup-user" id="search-popup">
+                             <div class="popup popup-user background-color-dark-1" id="search-popup">
                                      <div class="navbar spikl-nav">
                                        <div class="navbar-inner">
                                            <div class="left">
-                                               <a href="#" class="back-signin close-popup">
+                                               <a href="#" class="back-signin close-popup" id="popup-user-back">
                                                  <i class="f7-icons backIcon">chevron_left</i>
                                                </a>
                                            </div>
@@ -728,20 +761,32 @@
                                     <div class="profile-pic" id="popup-main-profile-pic">
 
                                     </div>
-
+                                            <i id="floating-button-spikler" class="f7-icons floating-pic-button spikler background-color-light-1">S</i>
                                             <i class="f7-icons floating-pic-button mail">email</i>
 
                                              <i id="floating-button-chat" class="f7-icons floating-pic-button chat" >chat</i>
 
                                  </div>
-                                <div class="content-block popup-profile-info-container">
+                                <div class="content-block popup-profile-info-container text-color-alt-1">
                                     <div class="profile-data profile-name" id="popup-name">
                                         Kitten
                                     </div>
                                     <div class="profile-data profile-uni" id="popup-uni">
                                         University of Kittens
                                     </div>
-
+                                    <div class="item-input friend-request" >
+                                      <label class="label-switch" id="friend-request">
+                                        <input type="checkbox" id="friend-request-check">
+                                        <div class="checkbox background-color-dark-1">
+                                          <span class="span-left">
+                                            Sent
+                                          </span>
+                                          <span class="span-right">
+                                            Send
+                                          </span>
+                                        </div>
+                                      </label>
+                                    </div>
                                     <div class="content-block" style="margin-top: 10px;">
                                         <table  style="text-align: center; width: 100%">
                                             <tr>
@@ -800,7 +845,7 @@
                                               </div>
                                         </div>
                                     </div>
-                             <div class="page popup popup-chat toolbar-fixed" data-popup=".popup-chat" id="chat-popup">
+                             <div class="page popup popup-chat background-color-dark-1 toolbar-fixed" data-popup=".popup-chat" id="chat-popup">
                                <div class="navbar spikl-nav">
                                  <div class="navbar-inner">
                                      <div class="left">
@@ -815,12 +860,12 @@
                                  </div>
                                   </div>
                                   <div class="toolbar messagebar">
-                                      <div class="toolbar-inner">
-                                        <textarea placeholder="Message"></textarea>
+                                      <div class="toolbar-inner background-color-dark-1">
+                                        <textarea class="border-color-light-1"placeholder="Message"></textarea>
                                           <a href="#" class="link">Send</a>
                                         </div>
                                   </div>
-                                  <div class="page-content messages-content" style="margin-top: 44px; position: static!important; height:80%!important">
+                                  <div class="page-content messages-content background-color-light-1" style="margin-top: 44px; position: static!important; height:80%!important">
                                       <div class="messages">
 
                                       </div>
@@ -833,14 +878,14 @@
                             <div class="tab-container" style="height: 100%; text-align: center; postion: relative">
                               <div class="list-block settings-list-block">
                                   <ul>
-                                    <li class="item-content setttings-item-content">
+                                    <li class="item-content setttings-item-content background-color-light-1 border-color-light-1 text-color-alt-1">
                                       <div class="item-media"><i class="icon icon-f7"></i></div>
                                       <div class="item-inner">
                                         <div class="item-title">Item title</div>
                                         <div class="item-after">Label</div>
                                       </div>
                                     </li>
-                                    <li class="item-conten setttings-item-content">
+                                    <li class="item-content setttings-item-content background-color-light-1 border-color-light-1 text-color-alt-">
                                       <div class="item-media"><i class="icon icon-f7"></i></div>
                                       <div class="item-inner">
                                         <div class="item-title">Title</div>
@@ -850,13 +895,13 @@
                                     <!-- Divider -->
                                     <li class="item-divider settings-divider">Accessibilty</li>
 
-                                    <li  class="item-content setttings-item-content">
+                                    <li  class="item-content setttings-item-content background-color-light-1 border-color-light-1 text-color-alt-">
                                       <div  class="item-inner">
                                         <div class="item-title">Theme</div>
-                                        <div class="item-after"><span class="theme-choice dark active"></span><span class="theme-choice light"></span></div>
+                                        <div class="item-after"><span class="theme-choice dark active border-color-dark-1"></span><span class="theme-choice light border-color-dark-1"></span></div>
                                       </div>
                                     </li>
-                                    <li class="item-content setttings-item-content">
+                                    <li class="item-content setttings-item-content background-color-light-1 border-color-light-1 text-color-alt-">
                                       <div class="item-media"><i class="icon icon-f7"></i></div>
                                       <div class="item-inner">
                                         <div class="item-title">Another item</div>
@@ -881,25 +926,25 @@
     </div>
 
     <div class="page-content modal-overlay modal-overlay-invisible">
-      <div class="popover popover-notes">
-        <div class="popover-angle"></div>
-        <div class="popover-inner">
+      <div class="popover popover-notes background-color-light-1 text-color-alt-1">
+        <div class="popover-angle border-color-light-1"></div>
+        <div class="popover-inner background-color-light-1 border-color-light-1">
         <div class="list-block">
           <ul>
-            <li><a href="#" class="list-button item-link">Link 1</a></li>
-            <li><a href="#" class="list-button item-link">Link 2</a></li>
-            <li><a href="#" class="list-button item-link">Link 3</a></li>
-            <li><a href="#" class="list-button item-link">Link 4</a></li>
+            <li><a href="#" class="list-button popover-link-item text-color-alt-1" id="notes-expand">Expand</a></li>
+            <li><a href="#" class="list-button popover-link-item text-color-alt-1">Send</a></li>
+            <li><a href="#" class="list-button popover-link-item text-color-alt-1" id="notes-delete">Delete</a></li>
           </ul>
         </div>
       </div>
       </div>
        <div data-page="over" class="page" style="background-color: transparent">
         <div class="page-content spikl-page" id="addLangModal">
-        <div class="add-note-input-cont invisible">
-                <input class="add-note-input spikler" placeholder="tag to spikler" name="spikler">
-                <input class="add-note-input title" placeholder="add title" name="title">
-                <textarea class="add-note-input body" placeholder="add note"></textarea>
+        <div class="add-note-input-cont invisible background-color-dark-1 border-color-main-1">
+                <input class="add-note-input spikler background-color-light-1 border-color-light-1 text-color-main-1" placeholder="tag to spikler" name="spikler">
+                <input class="add-note-input title background-color-light-1 border-color-light-1 text-color-main-1" placeholder="add title" name="title">
+                <textarea id="add-note-text-area" class="add-note-input body background-color-light-1 border-color-light-1 text-color-main-1" placeholder="add note"></textarea>
+
                 <a href="#" class="submit-note">
                     add note
                 </a>
@@ -927,8 +972,8 @@
         -webkit-align-items: center;
         align-items: center;
         box-sizing: border-box;">
-                        <div class="c100 p0 big orange" id="change-lang-prof" style="margin:auto; font-size: 100px !important;">
-                            <span>ENG</span>
+                        <div class="c100 p0 big orange text-color-alt-1" id="change-lang-prof" style="margin:auto; font-size: 100px !important;">
+                            <span id="change-lang-name">ENG</span>
                             <div class="slice">
                                 <div class="bar"></div>
                                 <div class="fill"></div>
@@ -1002,5 +1047,6 @@
     <script type="text/javascript" src="js/sha512.js"></script>
     <script type="text/javascript" src="js/spikl.js"></script>
   <script type="text/javascript" src="cordova.js"></script>
+
   </body>
 </html>
